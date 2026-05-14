@@ -121,18 +121,8 @@ export default function AmpariaPage() {
           }
         }
 
-        /* Iris/shutter: the A closes to a horizontal slit then reopens */
-        @keyframes irisShutter {
-          0%         { clip-path: inset(0% 0% 0% 0% round 4px); }
-          15%        { clip-path: inset(0% 0% 0% 0% round 4px); }
-          35%        { clip-path: inset(44% 8% 44% 8% round 4px); }
-          55%        { clip-path: inset(44% 8% 44% 8% round 4px); }
-          75%        { clip-path: inset(0% 0% 0% 0% round 4px); }
-          100%       { clip-path: inset(0% 0% 0% 0% round 4px); }
-        }
         .hero-icon {
-          animation: logoGlow 7s ease-in-out infinite, irisShutter 9s ease-in-out infinite;
-          animation-delay: 0s, 3s;
+          animation: logoGlow 7s ease-in-out infinite;
         }
 
         /* Wordmark: subtle shimmer scan */

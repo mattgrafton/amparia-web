@@ -186,8 +186,8 @@ export default function PhoneShowcase({ lang = "es" }) {
 
         /* Mobile: perspective tilt side to side (rotateY) */
         @keyframes phoneTilt {
-          0%, 100% { transform: perspective(600px) rotateY(-18deg); }
-          50%       { transform: perspective(600px) rotateY( 18deg); }
+          0%, 100% { transform: perspective(800px) rotateY(-12deg); }
+          50%       { transform: perspective(800px) rotateY( 12deg); }
         }
 
         @media (max-width: 640px) {
@@ -200,10 +200,10 @@ export default function PhoneShowcase({ lang = "es" }) {
           .phone-float-1,
           .phone-float-2 {
             margin-bottom: 0 !important;
-            animation: phoneTilt 5s ease-in-out infinite !important;
+            animation: phoneTilt 9s ease-in-out infinite !important;
           }
-          .phone-float-1 { animation-delay: 0.9s !important; }
-          .phone-float-2 { animation-delay: 1.8s !important; }
+          .phone-float-1 { animation-delay: 1.5s !important; }
+          .phone-float-2 { animation-delay: 3s !important; }
         }
       `}</style>
 
