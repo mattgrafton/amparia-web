@@ -135,26 +135,8 @@ export default function AmpariaPage() {
           .story-svg         { display: none !important; }
         }`}</style>
 
-      {/* ── Grain noise overlay ── */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: "fixed",
-          inset: 0,
-          zIndex: 9999,
-          pointerEvents: "none",
-          mixBlendMode: "overlay",
-          opacity: 0.3,
-        }}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-          <filter id="grain">
-            <feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="4" stitchTiles="stitch" />
-            <feColorMatrix type="saturate" values="0" />
-          </filter>
-          <rect width="100%" height="100%" filter="url(#grain)" />
-        </svg>
-      </div>
+      {/* ── Grain noise overlay — CSS only, no SVG flash ── */}
+      <div aria-hidden="true" className="grain-overlay" />
 
       {/* ── NAVIGATION ── */}
       <header
