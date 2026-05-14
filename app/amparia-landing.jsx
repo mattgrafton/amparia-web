@@ -497,9 +497,9 @@ export default function AmpariaPage() {
           position: "relative",
           zIndex: 10,
           marginTop: "100vh",
-          background: "transparent",
-          backdropFilter: "blur(0px)",
-          WebkitBackdropFilter: "blur(0px)",
+          background: "linear-gradient(to bottom, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.75) 8%, transparent 20%)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
           borderTop: "1px solid rgba(255,255,255,0.04)",
         }}
       >
@@ -528,6 +528,7 @@ export default function AmpariaPage() {
             gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
             gap: "1px",
             background: "rgba(255,255,255,0.05)",
+            alignItems: "stretch",
           }}>
             <StoryCard lang={lang} id="alert" />
             <StoryCard lang={lang} id="setup" />
@@ -678,7 +679,7 @@ function StoryCard({ lang, id, pairB }) {
     <motion.div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      whileHover={{ scale: 1.01 }}
+      
       transition={{ duration: 0.35 }}
       className={`story-card${pairB ? " story-card-pair-b" : ""}`}
       style={{
