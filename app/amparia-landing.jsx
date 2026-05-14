@@ -199,7 +199,7 @@ export default function AmpariaPage() {
           right: 0,
           zIndex: 100,
           mixBlendMode: "difference",
-          padding: "28px 40px",
+          padding: "16px 40px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
@@ -679,6 +679,7 @@ function StoryCard({ lang, id, pairB }) {
     <motion.div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      whileHover={{ scale: 1.01 }}
       
       transition={{ duration: 0.35 }}
       className={`story-card${pairB ? " story-card-pair-b" : ""}`}
