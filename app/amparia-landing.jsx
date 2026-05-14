@@ -50,7 +50,7 @@ export default function AmpariaPage() {
   // Smooth spring-based scroll transforms for fluid hero transition
   const rawScale   = useTransform(scrollY, [200, 1100], [1, 0.82]);
   const rawOpacity = useTransform(scrollY, [200, 1100], [1, 0.55]);
-  const rawBlur    = useTransform(scrollY, [600, 1100], [0, 18]);
+  const rawBlur    = useTransform(scrollY, [200, 700], [0, 18]);
   const rawY       = useTransform(scrollY, [200, 1100], [0, -60]);
 
   const heroScale   = useSpring(rawScale,   { stiffness: 280, damping: 24, mass: 0.15 });
@@ -497,7 +497,7 @@ export default function AmpariaPage() {
           position: "relative",
           zIndex: 10,
           marginTop: "100vh",
-          background: "linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, transparent 3%)",
+          background: "linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, transparent 6%)",
           backdropFilter: "blur(12px)",
           WebkitBackdropFilter: "blur(12px)",
           borderTop: "1px solid rgba(255,255,255,0.04)",
