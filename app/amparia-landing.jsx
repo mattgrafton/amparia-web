@@ -108,7 +108,7 @@ export default function AmpariaPage() {
           .story-card-top    { padding: 20px 14px !important; border-bottom: none !important; }
           .story-card-bottom { padding: 20px 14px !important; background: #080808; }
           .story-svg         { display: none !important; }
-          .story-card-pair-b { margin-top: 40px !important; }
+          .story-card + .story-card { margin-top: 40px !important; }
         }
 
         /* ── IPAD only ── */
@@ -129,7 +129,7 @@ export default function AmpariaPage() {
             padding: 0 !important;
             gap: 0 !important;
           }
-          .story-card-pair-b { margin-top: 40px !important; }
+          .story-card + .story-card { margin-top: 40px !important; }
           .story-card-top    { padding: 28px 20px !important; border-bottom: none !important; }
           .story-card-bottom { padding: 28px 20px !important; background: #080808; }
           .story-svg         { display: none !important; }

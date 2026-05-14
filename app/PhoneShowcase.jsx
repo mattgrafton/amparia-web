@@ -204,10 +204,7 @@ export default function PhoneShowcase({ lang = "es" }) {
         {screens.map((screen, i) => (
           <motion.div
             key={screen.image}
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ delay: i * 0.15, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 1, y: 0 }}
             className={`phone-float-${i}`}
             style={{ marginBottom: i === 1 && !isTouch ? "40px" : "0px" }}
           >
