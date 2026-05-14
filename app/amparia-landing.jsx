@@ -49,9 +49,27 @@ export default function AmpariaPage() {
   const heroScale = useTransform(scrollY, [0, 800], [1, 0.88]);
   const heroOpacity = useTransform(scrollY, [0, 800], [1, 0.25]);
 
-  const handleSubmit = (e) => {
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email) setSubmitted(true);
+    setError("");
+    if (!email) return;
+    try {
+      const res = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        setError(data.error || 'Something went wrong');
+      }
+    } catch (err) {
+      setError('Network error, please try again');
+    }
   };
 
   return (
