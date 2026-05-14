@@ -624,8 +624,8 @@ export default function AmpariaPage() {
           <span style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif", fontWeight: 900, fontSize: "11px", letterSpacing: "0.35em", color: "rgba(255,255,255,0.15)" }}>
             AMPARIA
           </span>
-          <span style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif", fontSize: "9px", letterSpacing: "0.2em", color: "rgba(255,255,255,0.1)" }}>
-            © 2025 AMPARIA.{" "}{lang === "es" ? "TODOS LOS DERECHOS RESERVADOS." : "ALL RIGHTS RESERVED."}
+          <span style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif", fontSize: "9px", letterSpacing: "0.2em", color: "rgba(255,255,255,0.25)" }}>
+            © 2026 AMPARIA.{" "}{lang === "es" ? "TODOS LOS DERECHOS RESERVADOS." : "ALL RIGHTS RESERVED."}
           </span>
         </footer>
       </div>

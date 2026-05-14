@@ -3,11 +3,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "AMPARIA",
-  description: "Los que protegen lo que otros no pueden perder.",
+  description: "LOS QUE PROTEGEN LO QUE OTROS NO PUEDEN PERDER.",
   metadataBase: new URL("https://www.amparia.app"),
   openGraph: {
     title: "AMPARIA",
-    description: "Los que protegen lo que otros no pueden perder.",
+    description: "LOS QUE PROTEGEN LO QUE OTROS NO PUEDEN PERDER.",
     url: "https://www.amparia.app",
     siteName: "AMPARIA",
     images: [
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "AMPARIA",
-    description: "Los que protegen lo que otros no pueden perder.",
+    description: "LOS QUE PROTEGEN LO QUE OTROS NO PUEDEN PERDER.",
     images: ["/og-image.jpg"],
   },
   robots: {
