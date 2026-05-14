@@ -154,9 +154,9 @@ function PhoneTiltCard({ image, label, badge }) {
 
 export default function PhoneShowcase({ lang = "es" }) {
   const screens = [
-    { image: "/IMG_4680.png", label: "Alertas",      badge: "LIVE"  },
-    { image: "/IMG_4682.png", label: "Dashboard",    badge: "NUEVO" },
-    { image: "/IMG_4681.png", label: "Propiedades"                  },
+    { image: "/IMG_4680.png", label: lang === "es" ? "Alertas"     : "Alerts",     badge: "LIVE"                          },
+    { image: "/IMG_4682.png", label: lang === "es" ? "Dashboard"   : "Dashboard",  badge: lang === "es" ? "NUEVO" : "NEW" },
+    { image: "/IMG_4681.png", label: lang === "es" ? "Propiedades" : "Properties"                                         },
   ];
 
   return (
@@ -175,38 +175,35 @@ export default function PhoneShowcase({ lang = "es" }) {
       <style>{`
         .dim-label { color: rgba(255,255,255,0.45) !important; }
 
+        /* Desktop: float up/down with static rotation */
         @keyframes phoneFloat {
           0%, 100% { transform: translateY(0px) rotate(var(--phone-rotate, 0deg)); }
-          50%       { transform: translateY(-10px) rotate(var(--phone-rotate, 0deg)); }
+          50%       { transform: translateY(-12px) rotate(var(--phone-rotate, 0deg)); }
         }
-        .phone-float-0 {
-          --phone-rotate: -3deg;
-          animation: phoneFloat 5.5s ease-in-out infinite;
-          animation-delay: 0s;
-        }
-        .phone-float-1 {
-          --phone-rotate: 0deg;
-          animation: phoneFloat 5.5s ease-in-out infinite;
-          animation-delay: 0.6s;
-        }
-        .phone-float-2 {
-          --phone-rotate: 3deg;
-          animation: phoneFloat 5.5s ease-in-out infinite;
-          animation-delay: 1.2s;
+        .phone-float-0 { --phone-rotate: -3deg; animation: phoneFloat 5.5s ease-in-out infinite; animation-delay: 0s; }
+        .phone-float-1 { --phone-rotate:  0deg; animation: phoneFloat 5.5s ease-in-out infinite; animation-delay: 0.7s; }
+        .phone-float-2 { --phone-rotate:  3deg; animation: phoneFloat 5.5s ease-in-out infinite; animation-delay: 1.4s; }
+
+        /* Mobile: slow left-right rock */
+        @keyframes phoneRock {
+          0%, 100% { transform: rotate(-4deg); }
+          50%       { transform: rotate( 4deg); }
         }
 
         @media (max-width: 640px) {
           .phones-row {
             flex-direction: column !important;
             align-items: center !important;
-            gap: 48px !important;
+            gap: 52px !important;
           }
           .phone-float-0,
           .phone-float-1,
           .phone-float-2 {
-            --phone-rotate: 0deg !important;
             margin-bottom: 0 !important;
+            animation: phoneRock 6s ease-in-out infinite !important;
           }
+          .phone-float-1 { animation-delay: 0.8s !important; }
+          .phone-float-2 { animation-delay: 1.6s !important; }
         }
       `}</style>
 

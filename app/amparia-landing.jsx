@@ -120,8 +120,28 @@ export default function AmpariaPage() {
               drop-shadow(0 48px 120px rgba(0,0,0,0.75));
           }
         }
+
+        /* Shutter: a dark overlay that closes (fades in) then opens (fades out) */
+        @keyframes shutterClose {
+          0%   { opacity: 0; }
+          18%  { opacity: 0; }
+          32%  { opacity: 0.92; }
+          50%  { opacity: 0.92; }
+          68%  { opacity: 0; }
+          100% { opacity: 0; }
+        }
+        .hero-shutter {
+          position: absolute;
+          inset: 0;
+          background: #000;
+          animation: shutterClose 7s ease-in-out infinite;
+          pointer-events: none;
+          z-index: 3;
+          border-radius: inherit;
+        }
+
         .hero-icon {
-          animation: logoGlow 6s ease-in-out infinite;
+          animation: logoGlow 7s ease-in-out infinite;
         }
 
         /* Wordmark: subtle shimmer scan */
@@ -265,13 +285,13 @@ export default function AmpariaPage() {
                   fontWeight: 900,
                   fontSize: "clamp(60px, 13vw, 150px)",
                   letterSpacing: "-0.04em",
-                  color: "#1a1a1a",
+                  color: "#fff",
                   textDecoration: "none",
                   lineHeight: 1.0,
                   transition: "color 0.15s ease",
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "#1a1a1a")}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.35)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "#fff")}
               >
                 {item.label}
               </motion.a>
@@ -353,6 +373,8 @@ export default function AmpariaPage() {
               filter: "blur(24px)",
               zIndex: 0,
             }} />
+            {/* Shutter overlay — closes and reopens over the A */}
+            <div className="hero-shutter" />
             {/* FIX 1a — hero-icon class overrides width on mobile */}
             <img
               src="/amparia-icon.png"
