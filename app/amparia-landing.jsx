@@ -87,9 +87,13 @@ export default function AmpariaPage() {
         /* Fix 1: dim labels readable on all screen sizes */
         .dim-label { color: rgba(255,255,255,0.45) !important; }
 
-        @media (max-width: 640px) {
+        @media (max-width: 1024px) {
           .hero-icon     { width: clamp(350px, 82vw, 560px) !important; }
           .hero-wordmark { font-size: clamp(40px, 10vw, 88px) !important; }
+        }
+        @media (min-width: 641px) and (max-width: 1024px) {
+          .hero-icon     { width: clamp(420px, 55vw, 620px) !important; }
+          .hero-wordmark { font-size: clamp(52px, 8vw, 100px) !important; }
 
           .story-grid {
             display: flex !important;

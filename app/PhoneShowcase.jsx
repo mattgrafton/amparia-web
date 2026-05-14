@@ -147,7 +147,7 @@ export default function PhoneShowcase({ lang = "es" }) {
         }
 
         /* Mobile: stack vertically, tilt animation */
-        @media (max-width: 640px) {
+        @media (max-width: 1024px) {
           .phones-row { flex-direction: column !important; align-items: center !important; gap: 52px !important; }
           .phone-float-0,
           .phone-float-1,
