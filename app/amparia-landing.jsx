@@ -149,6 +149,10 @@ export default function AmpariaPage() {
           100% { background-position: -200% center; }
         }
         .hero-wordmark-animated {
+        }
+        @media (min-width: 641px) and (max-width: 1024px) {
+          .hero-icon     { width: clamp(350px, 52vw, 560px) !important; }
+          .hero-wordmark { font-size: clamp(40px, 7.5vw, 88px) !important; }
           background-size: 200% auto !important;
           animation: wordmarkShimmer 8s linear infinite;
         }
@@ -381,7 +385,7 @@ export default function AmpariaPage() {
               className="hero-icon"
               style={{
                 position: "relative",
-                width: "clamp(280px, 42vw, 560px)",
+                width: "clamp(220px, 38vw, 560px)",
                 height: "auto",
                 display: "block",
                 zIndex: 1,
