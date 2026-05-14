@@ -199,7 +199,7 @@ export default function AmpariaPage() {
           right: 0,
           zIndex: 100,
           mixBlendMode: "difference",
-          padding: "16px 40px",
+          padding: "10px 40px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
