@@ -87,7 +87,7 @@ export default function AmpariaPage() {
         /* Fix 1: dim labels readable on all screen sizes */
         .dim-label { color: rgba(255,255,255,0.45) !important; }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 640px) {
           .hero-icon     { width: clamp(350px, 82vw, 560px) !important; }
           .hero-wordmark { font-size: clamp(40px, 10vw, 88px) !important; }
         }
@@ -110,6 +110,30 @@ export default function AmpariaPage() {
           }
           .story-card-top    { padding: 20px 14px !important; border-bottom: none !important; }
           .story-card-bottom { padding: 20px 14px !important; background: #080808; }
+          .story-svg         { display: none !important; }
+          .story-card-pair-b { margin-top: 40px !important; }
+        }
+
+        /* iPad only — same layout as mobile but bigger */
+        @media (min-width: 641px) and (max-width: 1024px) {
+          .hero-icon     { width: clamp(420px, 55vw, 620px) !important; }
+          .hero-wordmark { font-size: clamp(52px, 8vw, 100px) !important; }
+
+          .story-grid {
+            display: flex !important;
+            flex-direction: column !important;
+            background: transparent !important;
+            gap: 0 !important;
+          }
+          .story-card {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            min-height: auto !important;
+            padding: 0 !important;
+            gap: 0 !important;
+          }
+          .story-card-top    { padding: 28px 20px !important; border-bottom: none !important; }
+          .story-card-bottom { padding: 28px 20px !important; background: #080808; }
           .story-svg         { display: none !important; }
           .story-card-pair-b { margin-top: 40px !important; }
         }

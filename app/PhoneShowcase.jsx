@@ -147,7 +147,7 @@ export default function PhoneShowcase({ lang = "es" }) {
         }
 
         /* Mobile: stack vertically, tilt animation */
-        @media (max-width: 1024px) {
+        @media (max-width: 640px) {
           .phones-row { flex-direction: column !important; align-items: center !important; gap: 52px !important; }
           .phone-float-0,
           .phone-float-1,
@@ -156,12 +156,14 @@ export default function PhoneShowcase({ lang = "es" }) {
           .phone-float-2 { animation-delay: 3s !important; }
         }
 
-        /* iPad: 3 phones in a row, scaled down to fit */
+        /* iPad only — same as mobile: stack vertically, tilt animation */
         @media (min-width: 641px) and (max-width: 1024px) {
-          .phones-row { gap: 16px !important; }
-          .phone-card-inner { width: 190px !important; }
-          .phone-float-0 { --phone-rotate: -2deg; }
-          .phone-float-2 { --phone-rotate:  2deg; }
+          .phones-row { flex-direction: column !important; align-items: center !important; gap: 64px !important; }
+          .phone-float-0,
+          .phone-float-1,
+          .phone-float-2 { margin-bottom: 0 !important; animation: phoneTilt 9s ease-in-out infinite !important; }
+          .phone-float-1 { animation-delay: 1.5s !important; }
+          .phone-float-2 { animation-delay: 3s !important; }
         }
       `}</style>
 
