@@ -121,27 +121,18 @@ export default function AmpariaPage() {
           }
         }
 
-        /* Shutter: a dark overlay that closes (fades in) then opens (fades out) */
-        @keyframes shutterClose {
-          0%   { opacity: 0; }
-          18%  { opacity: 0; }
-          32%  { opacity: 0.92; }
-          50%  { opacity: 0.92; }
-          68%  { opacity: 0; }
-          100% { opacity: 0; }
+        /* Iris/shutter: the A closes to a horizontal slit then reopens */
+        @keyframes irisShutter {
+          0%         { clip-path: inset(0% 0% 0% 0% round 4px); }
+          15%        { clip-path: inset(0% 0% 0% 0% round 4px); }
+          35%        { clip-path: inset(44% 8% 44% 8% round 4px); }
+          55%        { clip-path: inset(44% 8% 44% 8% round 4px); }
+          75%        { clip-path: inset(0% 0% 0% 0% round 4px); }
+          100%       { clip-path: inset(0% 0% 0% 0% round 4px); }
         }
-        .hero-shutter {
-          position: absolute;
-          inset: 0;
-          background: #000;
-          animation: shutterClose 7s ease-in-out infinite;
-          pointer-events: none;
-          z-index: 3;
-          border-radius: inherit;
-        }
-
         .hero-icon {
-          animation: logoGlow 7s ease-in-out infinite;
+          animation: logoGlow 7s ease-in-out infinite, irisShutter 9s ease-in-out infinite;
+          animation-delay: 0s, 3s;
         }
 
         /* Wordmark: subtle shimmer scan */
@@ -283,7 +274,7 @@ export default function AmpariaPage() {
                   display: "block",
                   fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
                   fontWeight: 900,
-                  fontSize: "clamp(60px, 13vw, 150px)",
+                  fontSize: "clamp(36px, 8vw, 96px)",
                   letterSpacing: "-0.04em",
                   color: "#fff",
                   textDecoration: "none",
@@ -373,8 +364,7 @@ export default function AmpariaPage() {
               filter: "blur(24px)",
               zIndex: 0,
             }} />
-            {/* Shutter overlay — closes and reopens over the A */}
-            <div className="hero-shutter" />
+
             {/* FIX 1a — hero-icon class overrides width on mobile */}
             <img
               src="/amparia-icon.png"

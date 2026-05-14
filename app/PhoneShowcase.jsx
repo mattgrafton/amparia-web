@@ -184,10 +184,10 @@ export default function PhoneShowcase({ lang = "es" }) {
         .phone-float-1 { --phone-rotate:  0deg; animation: phoneFloat 5.5s ease-in-out infinite; animation-delay: 0.7s; }
         .phone-float-2 { --phone-rotate:  3deg; animation: phoneFloat 5.5s ease-in-out infinite; animation-delay: 1.4s; }
 
-        /* Mobile: slow left-right rock */
-        @keyframes phoneRock {
-          0%, 100% { transform: rotate(-4deg); }
-          50%       { transform: rotate( 4deg); }
+        /* Mobile: perspective tilt side to side (rotateY) */
+        @keyframes phoneTilt {
+          0%, 100% { transform: perspective(600px) rotateY(-18deg); }
+          50%       { transform: perspective(600px) rotateY( 18deg); }
         }
 
         @media (max-width: 640px) {
@@ -200,10 +200,10 @@ export default function PhoneShowcase({ lang = "es" }) {
           .phone-float-1,
           .phone-float-2 {
             margin-bottom: 0 !important;
-            animation: phoneRock 6s ease-in-out infinite !important;
+            animation: phoneTilt 5s ease-in-out infinite !important;
           }
-          .phone-float-1 { animation-delay: 0.8s !important; }
-          .phone-float-2 { animation-delay: 1.6s !important; }
+          .phone-float-1 { animation-delay: 0.9s !important; }
+          .phone-float-2 { animation-delay: 1.8s !important; }
         }
       `}</style>
 
