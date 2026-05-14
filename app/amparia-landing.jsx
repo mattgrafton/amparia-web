@@ -497,7 +497,7 @@ export default function AmpariaPage() {
           position: "relative",
           zIndex: 10,
           marginTop: "100vh",
-          background: "linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, transparent 6%)",
+          background: "linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, transparent 3%)",
           backdropFilter: "blur(12px)",
           WebkitBackdropFilter: "blur(12px)",
           borderTop: "1px solid rgba(255,255,255,0.04)",
