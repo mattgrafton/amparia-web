@@ -359,14 +359,6 @@ export default function AmpariaPage() {
           />
         </div>
 
-        <svg aria-hidden="true" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0.18, mixBlendMode: "screen", zIndex: 1 }}>
-          <filter id="h-grain" colorInterpolationFilters="sRGB">
-            <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" seed="3" stitchTiles="stitch" />
-            <feColorMatrix type="saturate" values="0" />
-          </filter>
-          <rect width="100%" height="100%" filter="url(#h-grain)" />
-        </svg>
-
         <div style={{
           position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none",
           background: "linear-gradient(125deg, rgba(255,255,255,0.04) 0%, transparent 40%, rgba(0,0,0,0.4) 100%)",
