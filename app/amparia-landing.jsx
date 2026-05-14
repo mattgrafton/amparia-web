@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import PhoneShowcase from "./PhoneShowcase";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
 
 const translations = {
   es: {
@@ -46,8 +46,17 @@ export default function AmpariaPage() {
 
   const containerRef = useRef(null);
   const { scrollY } = useScroll();
-  const heroScale = useTransform(scrollY, [0, 800], [1, 0.88]);
-  const heroOpacity = useTransform(scrollY, [0, 800], [1, 0.25]);
+
+  // Smooth spring-based scroll transforms for fluid hero transition
+  const rawScale   = useTransform(scrollY, [0, 900], [1, 0.82]);
+  const rawOpacity = useTransform(scrollY, [0, 600], [1, 0]);
+  const rawBlur    = useTransform(scrollY, [0, 700], [0, 18]);
+  const rawY       = useTransform(scrollY, [0, 900], [0, -60]);
+
+  const heroScale   = useSpring(rawScale,   { stiffness: 60, damping: 20, mass: 0.8 });
+  const heroOpacity = useSpring(rawOpacity, { stiffness: 60, damping: 20, mass: 0.8 });
+  const heroBlur    = useSpring(rawBlur,    { stiffness: 60, damping: 20, mass: 0.8 });
+  const heroY       = useSpring(rawY,       { stiffness: 60, damping: 20, mass: 0.8 });
 
   const [error, setError] = useState("");
 
@@ -329,6 +338,8 @@ export default function AmpariaPage() {
           justifyContent: "center",
           scale: heroScale,
           opacity: heroOpacity,
+          y: heroY,
+          filter: useTransform(heroBlur, v => `blur(${v}px)`),
         }}
       >
         {/* ── REAL CEMENT PHOTO — full bleed, darkened ── */}
