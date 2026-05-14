@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     siteName: "AMPARIA",
     images: [
       {
-        url: "/amparia-icon.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "AMPARIA — Vigilancia Inteligente",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AMPARIA — Vigilancia Inteligente",
     description: "El primer aviso llega en 3 segundos. AMPARIA protege tu patrimonio con IA.",
-    images: ["/amparia-icon.png"],
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
