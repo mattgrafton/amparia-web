@@ -391,12 +391,15 @@ export default function AmpariaPage() {
               draggable={false}
               className="hero-icon"
               style={{
-                position: "relative",
-                width: "clamp(220px, 38vw, 560px)",
-                height: "auto",
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "center",
                 display: "block",
                 zIndex: 1,
-                marginBottom: "-18%",
+                marginBottom: "0",
                 filter: `
                   brightness(1.15)
                   contrast(1.12)
