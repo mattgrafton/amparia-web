@@ -175,10 +175,6 @@ export default function PhoneShowcase({ lang = "es" }) {
       <style>{`
         .dim-label { color: rgba(255,255,255,0.45) !important; }
 
-        @media (max-width: 640px) {
-          .phone-side   { display: none !important; }
-        }
-
         @keyframes phoneFloat {
           0%, 100% { transform: translateY(0px) rotate(var(--phone-rotate, 0deg)); }
           50%       { transform: translateY(-10px) rotate(var(--phone-rotate, 0deg)); }
@@ -197,6 +193,20 @@ export default function PhoneShowcase({ lang = "es" }) {
           --phone-rotate: 3deg;
           animation: phoneFloat 5.5s ease-in-out infinite;
           animation-delay: 1.2s;
+        }
+
+        @media (max-width: 640px) {
+          .phones-row {
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 48px !important;
+          }
+          .phone-float-0,
+          .phone-float-1,
+          .phone-float-2 {
+            --phone-rotate: 0deg !important;
+            margin-bottom: 0 !important;
+          }
         }
       `}</style>
 
@@ -231,11 +241,11 @@ export default function PhoneShowcase({ lang = "es" }) {
       </div>
 
       {/* 3 phones */}
-      <div style={{
+      <div className="phones-row" style={{
         display: "flex",
         alignItems: "flex-end",
         gap: "clamp(16px, 4vw, 48px)",
-        flexWrap: "wrap",
+        flexWrap: "nowrap",
         justifyContent: "center",
       }}>
         {screens.map((screen, i) => (
@@ -245,7 +255,7 @@ export default function PhoneShowcase({ lang = "es" }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ delay: i * 0.15, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className={`${i === 0 ? "phone-center" : "phone-side"} phone-float-${i}`}
+            className={`phone-float-${i}`}
             style={{
               marginBottom: i === 1 ? "40px" : "0px",
             }}

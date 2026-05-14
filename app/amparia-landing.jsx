@@ -91,6 +91,48 @@ export default function AmpariaPage() {
           .story-svg         { display: none !important; }
           .story-card-pair-b { margin-top: 40px !important; }
         }
+
+        /* Hero logo: breathing light animation */
+        @keyframes logoGlow {
+          0%, 100% {
+            filter:
+              brightness(1.15) contrast(1.12)
+              drop-shadow(0 2px 0 rgba(255,255,255,0.10))
+              drop-shadow(0 8px 24px rgba(0,0,0,0.95))
+              drop-shadow(0 24px 64px rgba(0,0,0,0.80))
+              drop-shadow(0 48px 120px rgba(0,0,0,0.60));
+          }
+          40% {
+            filter:
+              brightness(1.30) contrast(1.08)
+              drop-shadow(0 2px 0 rgba(255,255,255,0.28))
+              drop-shadow(0 0px 40px rgba(255,255,255,0.08))
+              drop-shadow(0 8px 24px rgba(0,0,0,0.70))
+              drop-shadow(0 24px 80px rgba(0,0,0,0.50))
+              drop-shadow(0 48px 120px rgba(0,0,0,0.35));
+          }
+          70% {
+            filter:
+              brightness(1.10) contrast(1.15)
+              drop-shadow(0 2px 0 rgba(255,255,255,0.06))
+              drop-shadow(0 8px 24px rgba(0,0,0,0.99))
+              drop-shadow(0 24px 64px rgba(0,0,0,0.90))
+              drop-shadow(0 48px 120px rgba(0,0,0,0.75));
+          }
+        }
+        .hero-icon {
+          animation: logoGlow 6s ease-in-out infinite;
+        }
+
+        /* Wordmark: subtle shimmer scan */
+        @keyframes wordmarkShimmer {
+          0%   { background-position: 200% center; }
+          100% { background-position: -200% center; }
+        }
+        .hero-wordmark-animated {
+          background-size: 200% auto !important;
+          animation: wordmarkShimmer 8s linear infinite;
+        }
       `}</style>
 
       {/* ── Grain noise overlay ── */}
@@ -338,8 +380,7 @@ export default function AmpariaPage() {
           </div>
 
           <div style={{ position: "relative", marginTop: "8px", zIndex: 2 }}>
-            {/* FIX 1b — hero-wordmark class overrides font-size on mobile */}
-            <span className="hero-wordmark" style={{
+            <span className="hero-wordmark hero-wordmark-animated" style={{
               fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
               fontWeight: 900,
               fontSize: "clamp(32px, 6vw, 88px)",
@@ -349,14 +390,15 @@ export default function AmpariaPage() {
               lineHeight: 1,
               color: "transparent",
               backgroundImage: `linear-gradient(
-                180deg,
-                #ffffff 0%,
-                #e8e8e8 8%,
-                #c0c0c0 20%,
-                #a8a8a8 35%,
+                90deg,
+                #6a6a6a 0%,
+                #a8a8a8 20%,
+                #ffffff 35%,
+                #e8e8e8 45%,
                 #d4d4d4 50%,
-                #888888 65%,
-                #b0b0b0 80%,
+                #e8e8e8 55%,
+                #ffffff 65%,
+                #a8a8a8 80%,
                 #6a6a6a 100%
               )`,
               WebkitBackgroundClip: "text",
@@ -430,7 +472,7 @@ export default function AmpariaPage() {
 
         {/* ── STORY CARDS ── */}
         <section id="features" style={{ padding: "100px 40px", maxWidth: "1400px", margin: "0 auto" }}>
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "16px", marginBottom: "48px" }}>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "16px", marginBottom: "16px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
               <div style={{ width: "32px", height: "1px", background: "rgba(255,255,255,0.2)" }} />
               <span className="dim-label" style={{
@@ -461,7 +503,7 @@ export default function AmpariaPage() {
 
         {/* ── WAITLIST FORM ── */}
         <section id="waitlist" style={{ padding: "120px 40px 160px", maxWidth: "860px", margin: "0 auto" }}>
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "16px", marginBottom: "48px" }}>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "16px", marginBottom: "16px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
               <div style={{ width: "32px", height: "1px", background: "rgba(255,255,255,0.2)" }} />
               <span className="dim-label" style={{
