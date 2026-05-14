@@ -53,10 +53,10 @@ export default function AmpariaPage() {
   const rawBlur    = useTransform(scrollY, [0, 700], [0, 18]);
   const rawY       = useTransform(scrollY, [0, 900], [0, -60]);
 
-  const heroScale   = useSpring(rawScale,   { stiffness: 120, damping: 18, mass: 0.4 });
-  const heroOpacity = useSpring(rawOpacity, { stiffness: 120, damping: 18, mass: 0.4 });
-  const heroBlur    = useSpring(rawBlur,    { stiffness: 140, damping: 16, mass: 0.3 });
-  const heroY       = useSpring(rawY,       { stiffness: 120, damping: 18, mass: 0.4 });
+  const heroScale   = useSpring(rawScale,   { stiffness: 280, damping: 24, mass: 0.15 });
+  const heroOpacity = useSpring(rawOpacity, { stiffness: 280, damping: 24, mass: 0.15 });
+  const heroBlur    = useSpring(rawBlur,    { stiffness: 320, damping: 22, mass: 0.1 });
+  const heroY       = useSpring(rawY,       { stiffness: 280, damping: 24, mass: 0.15 });
 
   const [error, setError] = useState("");
 
