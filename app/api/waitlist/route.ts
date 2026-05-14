@@ -43,17 +43,15 @@ export async function POST(req: Request) {
 
   }
 
-  // Notify you when someone signs up
-
   await resend.emails.send({
 
     from: 'AMPARIA <onboarding@resend.dev>',
 
     to: 'mattgraftonie@gmail.com',
 
-    subject: '🔔 New waitlist signup',
+    subject: 'Nueva solicitud de acceso anticipado',
 
-    html: `<p><strong>${email}</strong> just joined the AMPARIA waitlist.</p>`,
+    html: `<p><strong>${email}</strong> acaba de unirse a la lista de espera de AMPARIA.</p>`,
 
   })
 
