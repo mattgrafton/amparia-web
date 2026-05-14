@@ -34,7 +34,7 @@ export async function POST(req: Request) {
   const date = new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })
 
   const { data, error: emailError } = await resend.emails.send({
-    from: 'AMPARIA <onboarding@resend.dev>',
+    from: 'AMPARIA <no-reply@amparia.app>',
     to: 'mattgraftonie@gmail.com',
     subject: `Nueva solicitud — ${email}`,
     html: `<div style="font-family:helvetica,sans-serif;padding:32px;color:#000">
