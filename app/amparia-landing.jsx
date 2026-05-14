@@ -73,7 +73,7 @@ export default function AmpariaPage() {
   };
 
   return (
-    <div style={{ background: "#000", minHeight: "100vh" }}>
+    <div style={{ background: "#000", minHeight: "100vh", overscrollBehaviorY: "none" }}>
 
       {/* ─────────────────────────────────────────
           MOBILE FIXES (max-width: 640px only)
@@ -108,7 +108,9 @@ export default function AmpariaPage() {
           .story-card-top    { padding: 20px 14px !important; border-bottom: none !important; }
           .story-card-bottom { padding: 20px 14px !important; background: #080808; }
           .story-svg         { display: none !important; }
-          .story-card-pair-b { margin-top: 40px !important; }
+          .story-pair { display: contents; }
+          .story-pair-b .story-card:first-child { margin-top: 40px !important; }
+          .story-pair-b .story-card:last-child  { margin-top: 40px !important; }
         }
 
         /* ── IPAD only ── */
@@ -122,17 +124,19 @@ export default function AmpariaPage() {
             background: transparent !important;
             gap: 0 !important;
           }
+          .story-pair { display: flex !important; flex-direction: row !important; gap: 0 !important; }
+          .story-pair-b { margin-top: 40px !important; }
           .story-card {
             display: grid !important;
             grid-template-columns: 1fr 1fr !important;
             min-height: auto !important;
             padding: 0 !important;
             gap: 0 !important;
+            flex: 1 !important;
           }
           .story-card-top    { padding: 28px 20px !important; border-bottom: none !important; }
           .story-card-bottom { padding: 28px 20px !important; background: #080808; }
           .story-svg         { display: none !important; }
-          .story-card-pair-b { margin-top: 40px !important; }
         }`}</style>
 
       {/* ── Grain noise overlay ── */}
@@ -493,10 +497,14 @@ export default function AmpariaPage() {
             gap: "1px",
             background: "rgba(255,255,255,0.05)",
           }}>
-            <StoryCard lang={lang} id="alert" />
-            <StoryCard lang={lang} id="setup" />
-            <StoryCard lang={lang} id="cost"     pairB />
-            <StoryCard lang={lang} id="evidence" pairB />
+            <div className="story-pair story-pair-a">
+              <StoryCard lang={lang} id="alert" />
+              <StoryCard lang={lang} id="setup" />
+            </div>
+            <div className="story-pair story-pair-b">
+              <StoryCard lang={lang} id="cost" />
+              <StoryCard lang={lang} id="evidence" />
+            </div>
           </div>
         </section>
 

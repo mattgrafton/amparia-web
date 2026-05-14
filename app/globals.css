@@ -24,3 +24,14 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* prevent pull-to-refresh grey flash + speed up rendering */
+html {
+  background: #000;
+  overscroll-behavior-y: none;
+}
+body {
+  background: #000;
+  overscroll-behavior-y: none;
+  -webkit-overflow-scrolling: touch;
+}
