@@ -135,8 +135,7 @@ export default function AmpariaPage() {
           .story-svg         { display: none !important; }
         }`}</style>
 
-      {/* ── Grain noise overlay — CSS only, no SVG flash ── */}
-      <div aria-hidden="true" className="grain-overlay" />
+
 
       {/* ── NAVIGATION ── */}
       <header
