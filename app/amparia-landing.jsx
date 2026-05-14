@@ -144,7 +144,7 @@ export default function AmpariaPage() {
 
         /* ── MOBILE only (phones) ── */
         @media (max-width: 640px) {
-          .hero-icon     { width: clamp(350px, 82vw, 560px) !important; }
+          .hero-icon     { width: clamp(350px, 92vw, 700px) !important; }
           .hero-wordmark { font-size: clamp(40px, 10vw, 88px) !important; }
 
           .story-grid {
@@ -386,7 +386,7 @@ export default function AmpariaPage() {
 
             {/* FIX 1a — hero-icon class overrides width on mobile */}
             <img
-              src="/amparia-icon.png"
+              src="/amparia-hero.png"
               alt="AMPARIA"
               draggable={false}
               className="hero-icon"
@@ -410,7 +410,7 @@ export default function AmpariaPage() {
             />
           </div>
 
-          <div style={{ position: "relative", marginTop: "8px", zIndex: 2 }}>
+          <div style={{ position: "relative", marginTop: "8px", zIndex: 2, display: "none" }}>
             <span className="hero-wordmark hero-wordmark-animated" style={{
               fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
               fontWeight: 900,
