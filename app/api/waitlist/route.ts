@@ -35,7 +35,7 @@ export async function POST(req: Request) {
 
   const { data, error: emailError } = await resend.emails.send({
     from: 'AMPARIA <onboarding@resend.dev>',
-    to: 'matt@grafton.es',
+    to: 'mattgraftonie@gmail.com',
     subject: `Nueva solicitud — ${email}`,
     html: `<div style="font-family:helvetica,sans-serif;padding:32px;color:#000">
       <h2 style="margin:0 0 24px">Nueva solicitud de acceso anticipado</h2>
