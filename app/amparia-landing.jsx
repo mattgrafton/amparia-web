@@ -386,13 +386,13 @@ export default function AmpariaPage() {
 
             {/* FIX 1a — hero-icon class overrides width on mobile */}
             <img
-              src="/amparia-hero.png"
+              src="/amparia-icon.png"
               alt="AMPARIA"
               draggable={false}
               className="hero-icon"
               style={{
                 position: "relative",
-                width: "clamp(320px, 75vw, 1000px)",
+                width: "clamp(220px, 38vw, 560px)",
                 height: "auto",
                 display: "block",
                 zIndex: 1,
@@ -410,7 +410,7 @@ export default function AmpariaPage() {
             />
           </div>
 
-          <div style={{ position: "relative", marginTop: "8px", zIndex: 2, display: "none" }}>
+          <div style={{ position: "relative", marginTop: "8px", zIndex: 2, }}>
             <span className="hero-wordmark hero-wordmark-animated" style={{
               fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
               fontWeight: 900,
