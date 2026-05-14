@@ -171,18 +171,40 @@ export default function PhoneShowcase({ lang = "es" }) {
         overflow: "hidden",
       }}
     >
-      {/* FIX 2: hide side phones on mobile, show only center */}
+      {/* Fix 1: dim-label global + Fix 2: mobile spacing + Fix 3: float animation */}
       <style>{`
+        .dim-label { color: rgba(255,255,255,0.45) !important; }
+
         @media (max-width: 640px) {
           .phone-side   { display: none !important; }
           .phone-center { transform: none !important; }
-          .dim-label    { color: rgba(255,255,255,0.45) !important; }
+          .showcase-label-gap { margin-bottom: 24px !important; }
+        }
+
+        @keyframes phoneFloat {
+          0%, 100% { transform: translateY(0px) rotate(var(--phone-rotate, 0deg)); }
+          50%       { transform: translateY(-10px) rotate(var(--phone-rotate, 0deg)); }
+        }
+        .phone-float-0 {
+          --phone-rotate: -3deg;
+          animation: phoneFloat 5.5s ease-in-out infinite;
+          animation-delay: 0s;
+        }
+        .phone-float-1 {
+          --phone-rotate: 0deg;
+          animation: phoneFloat 5.5s ease-in-out infinite;
+          animation-delay: 0.6s;
+        }
+        .phone-float-2 {
+          --phone-rotate: 3deg;
+          animation: phoneFloat 5.5s ease-in-out infinite;
+          animation-delay: 1.2s;
         }
       `}</style>
 
       {/* Section label — FIX 3 */}
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "16px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+        <div className="showcase-label-gap" style={{ display: "flex", alignItems: "center", gap: "20px" }}>
           <div style={{ width: "32px", height: "1px", background: "rgba(255,255,255,0.2)" }} />
           <span className="dim-label" style={{
             fontFamily: "'Helvetica Neue', Helvetica, sans-serif",
@@ -225,10 +247,9 @@ export default function PhoneShowcase({ lang = "es" }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ delay: i * 0.15, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className={i === 1 ? "phone-center" : "phone-side"}
+            className={`${i === 1 ? "phone-center" : "phone-side"} phone-float-${i}`}
             style={{
               marginBottom: i === 1 ? "40px" : "0px",
-              transform: i === 0 ? "rotate(-3deg)" : i === 2 ? "rotate(3deg)" : "rotate(0deg)",
             }}
           >
             <PhoneTiltCard

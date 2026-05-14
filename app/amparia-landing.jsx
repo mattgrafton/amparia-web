@@ -66,8 +66,11 @@ export default function AmpariaPage() {
           3. Small dim labels more readable
       ───────────────────────────────────────── */}
       <style>{`
+        /* Fix 1: dim labels readable on all screen sizes */
+        .dim-label { color: rgba(255,255,255,0.45) !important; }
+
         @media (max-width: 640px) {
-          .hero-icon    { width: clamp(350px, 82vw, 560px) !important; }
+          .hero-icon     { width: clamp(350px, 82vw, 560px) !important; }
           .hero-wordmark { font-size: clamp(40px, 10vw, 88px) !important; }
 
           .story-grid {
@@ -88,7 +91,8 @@ export default function AmpariaPage() {
           .story-svg         { display: none !important; }
           .story-card-pair-b { margin-top: 40px !important; }
 
-          .dim-label { color: rgba(255,255,255,0.45) !important; }
+          /* Fix 2: tighten label→content gap to match PhoneShowcase feel */
+          .section-label-gap { margin-bottom: 24px !important; }
         }
       `}</style>
 
@@ -430,7 +434,7 @@ export default function AmpariaPage() {
         {/* ── STORY CARDS ── */}
         <section id="features" style={{ padding: "100px 40px", maxWidth: "1400px", margin: "0 auto" }}>
           {/* FIX 3: dim-label */}
-          <div style={{ display: "flex", alignItems: "center", gap: "20px", marginBottom: "80px" }}>
+          <div className="section-label-gap" style={{ display: "flex", alignItems: "center", gap: "20px", marginBottom: "80px" }}>
             <div style={{ width: "32px", height: "1px", background: "rgba(255,255,255,0.2)" }} />
             <span className="dim-label" style={{
               fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
