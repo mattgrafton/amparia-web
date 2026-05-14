@@ -27,11 +27,11 @@ body {
 
 /* prevent pull-to-refresh grey flash + speed up rendering */
 html {
-  background: #000;
+  background: #000 !important;
   overscroll-behavior-y: none;
 }
 body {
-  background: #000;
+  background: #000 !important;
   overscroll-behavior-y: none;
   -webkit-overflow-scrolling: touch;
 }

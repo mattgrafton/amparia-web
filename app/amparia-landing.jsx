@@ -143,8 +143,8 @@ export default function AmpariaPage() {
           inset: 0,
           zIndex: 9999,
           pointerEvents: "none",
-          mixBlendMode: "soft-light",
-          opacity: 0.45,
+          mixBlendMode: "overlay",
+          opacity: 0.3,
         }}
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
@@ -461,9 +461,7 @@ export default function AmpariaPage() {
           position: "relative",
           zIndex: 10,
           marginTop: "100vh",
-          background: "rgba(0, 0, 0, 0.04)",
-          backdropFilter: "blur(18px)",
-          WebkitBackdropFilter: "blur(18px)",
+          background: "#000",
           borderTop: "1px solid rgba(255,255,255,0.04)",
         }}
       >
