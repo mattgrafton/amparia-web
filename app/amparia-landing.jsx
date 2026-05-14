@@ -49,7 +49,7 @@ export default function AmpariaPage() {
 
   // Smooth spring-based scroll transforms for fluid hero transition
   const rawScale   = useTransform(scrollY, [0, 900], [1, 0.82]);
-  const rawOpacity = useTransform(scrollY, [0, 600], [1, 0]);
+  const rawOpacity = useTransform(scrollY, [0, 900], [1, 0.55]);
   const rawBlur    = useTransform(scrollY, [0, 700], [0, 18]);
   const rawY       = useTransform(scrollY, [0, 900], [0, -60]);
 
