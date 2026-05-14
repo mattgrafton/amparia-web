@@ -33,7 +33,7 @@ export async function POST(req: Request) {
 
   const date = new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })
 
-  await resend.emails.send({
+  const { data, error: emailError } = await resend.emails.send({
     from: 'AMPARIA <onboarding@resend.dev>',
     to: 'matt@grafton.es',
     subject: `Nueva solicitud — ${email}`,
@@ -44,6 +44,12 @@ export async function POST(req: Request) {
       <p><strong>Total en lista:</strong> ${total ?? '—'}</p>
     </div>`,
   })
+
+  if (emailError) {
+    console.error('Resend error:', emailError)
+  } else {
+    console.log('Email sent:', data)
+  }
 
   return NextResponse.json({ success: true })
 }
