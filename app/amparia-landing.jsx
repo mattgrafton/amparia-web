@@ -442,7 +442,7 @@ export default function AmpariaPage() {
           position: "relative",
           zIndex: 10,
           marginTop: "100vh",
-          background: "#000",
+          background: "transparent",
           borderTop: "1px solid rgba(255,255,255,0.04)",
         }}
       >
