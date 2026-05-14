@@ -87,13 +87,10 @@ export default function AmpariaPage() {
         /* Fix 1: dim labels readable on all screen sizes */
         .dim-label { color: rgba(255,255,255,0.45) !important; }
 
+        /* ── MOBILE only (phones) ── */
         @media (max-width: 640px) {
           .hero-icon     { width: clamp(350px, 82vw, 560px) !important; }
           .hero-wordmark { font-size: clamp(40px, 10vw, 88px) !important; }
-        }
-        @media (min-width: 641px) and (max-width: 1024px) {
-          .hero-icon     { width: clamp(420px, 55vw, 620px) !important; }
-          .hero-wordmark { font-size: clamp(52px, 8vw, 100px) !important; }
 
           .story-grid {
             display: flex !important;
@@ -114,7 +111,7 @@ export default function AmpariaPage() {
           .story-card-pair-b { margin-top: 40px !important; }
         }
 
-        /* iPad only — same layout as mobile but bigger */
+        /* ── IPAD only ── */
         @media (min-width: 641px) and (max-width: 1024px) {
           .hero-icon     { width: clamp(420px, 55vw, 620px) !important; }
           .hero-wordmark { font-size: clamp(52px, 8vw, 100px) !important; }
@@ -136,55 +133,7 @@ export default function AmpariaPage() {
           .story-card-bottom { padding: 28px 20px !important; background: #080808; }
           .story-svg         { display: none !important; }
           .story-card-pair-b { margin-top: 40px !important; }
-        }
-
-        /* Hero logo: breathing light animation */
-        @keyframes logoGlow {
-          0%, 100% {
-            filter:
-              brightness(1.15) contrast(1.12)
-              drop-shadow(0 2px 0 rgba(255,255,255,0.10))
-              drop-shadow(0 8px 24px rgba(0,0,0,0.95))
-              drop-shadow(0 24px 64px rgba(0,0,0,0.80))
-              drop-shadow(0 48px 120px rgba(0,0,0,0.60));
-          }
-          40% {
-            filter:
-              brightness(1.30) contrast(1.08)
-              drop-shadow(0 2px 0 rgba(255,255,255,0.28))
-              drop-shadow(0 0px 40px rgba(255,255,255,0.08))
-              drop-shadow(0 8px 24px rgba(0,0,0,0.70))
-              drop-shadow(0 24px 80px rgba(0,0,0,0.50))
-              drop-shadow(0 48px 120px rgba(0,0,0,0.35));
-          }
-          70% {
-            filter:
-              brightness(1.10) contrast(1.15)
-              drop-shadow(0 2px 0 rgba(255,255,255,0.06))
-              drop-shadow(0 8px 24px rgba(0,0,0,0.99))
-              drop-shadow(0 24px 64px rgba(0,0,0,0.90))
-              drop-shadow(0 48px 120px rgba(0,0,0,0.75));
-          }
-        }
-
-        .hero-icon {
-          animation: logoGlow 7s ease-in-out infinite;
-        }
-
-        /* Wordmark: subtle shimmer scan */
-        @keyframes wordmarkShimmer {
-          0%   { background-position: 200% center; }
-          100% { background-position: -200% center; }
-        }
-        .hero-wordmark-animated {
-        }
-        @media (min-width: 641px) and (max-width: 1024px) {
-          .hero-icon     { width: clamp(350px, 52vw, 560px) !important; }
-          .hero-wordmark { font-size: clamp(40px, 7.5vw, 88px) !important; }
-          background-size: 200% auto !important;
-          animation: wordmarkShimmer 8s linear infinite;
-        }
-      `}</style>
+        }`}</style>
 
       {/* ── Grain noise overlay ── */}
       <div
