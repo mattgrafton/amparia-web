@@ -18,6 +18,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
+      
+      <link rel="preload" as="image" href="/cement.jpg" />
+      <link rel="preload" as="image" href="/amparia-icon.png" />
+      <link rel="preload" as="image" href="/IMG_4680.png" />
+      <link rel="preload" as="image" href="/IMG_4681.png" />
+      <link rel="preload" as="image" href="/IMG_4682.png" />
       <body style={{ background: "#000", margin: 0 }}>{children}</body>
     </html>
   );
