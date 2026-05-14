@@ -53,3 +53,13 @@ body {
   background-size: 128px 128px;
   mix-blend-mode: soft-light;
 }
+
+/* Smooth scroll + GPU acceleration */
+html {
+  scroll-behavior: smooth;
+}
+.hero-icon, .hero-wordmark-animated {
+  will-change: filter, background-position;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}

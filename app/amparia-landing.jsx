@@ -87,6 +87,50 @@ export default function AmpariaPage() {
         /* Fix 1: dim labels readable on all screen sizes */
         .dim-label { color: rgba(255,255,255,0.45) !important; }
 
+        /* ── Hero logo breathing glow ── */
+        @keyframes logoGlow {
+          0%, 100% {
+            filter:
+              brightness(1.15) contrast(1.12)
+              drop-shadow(0 2px 0 rgba(255,255,255,0.10))
+              drop-shadow(0 8px 24px rgba(0,0,0,0.95))
+              drop-shadow(0 24px 64px rgba(0,0,0,0.80))
+              drop-shadow(0 48px 120px rgba(0,0,0,0.60));
+          }
+          40% {
+            filter:
+              brightness(1.35) contrast(1.08)
+              drop-shadow(0 2px 0 rgba(255,255,255,0.32))
+              drop-shadow(0 0px 48px rgba(255,255,255,0.10))
+              drop-shadow(0 8px 24px rgba(0,0,0,0.70))
+              drop-shadow(0 24px 80px rgba(0,0,0,0.50))
+              drop-shadow(0 48px 120px rgba(0,0,0,0.35));
+          }
+          70% {
+            filter:
+              brightness(1.10) contrast(1.15)
+              drop-shadow(0 2px 0 rgba(255,255,255,0.06))
+              drop-shadow(0 8px 24px rgba(0,0,0,0.99))
+              drop-shadow(0 24px 64px rgba(0,0,0,0.90))
+              drop-shadow(0 48px 120px rgba(0,0,0,0.75));
+          }
+        }
+        .hero-icon {
+          animation: logoGlow 7s ease-in-out infinite;
+          will-change: filter;
+        }
+
+        /* ── Wordmark metallic shimmer ── */
+        @keyframes wordmarkShimmer {
+          0%   { background-position: 200% center; }
+          100% { background-position: -200% center; }
+        }
+        .hero-wordmark-animated {
+          background-size: 200% auto !important;
+          animation: wordmarkShimmer 8s linear infinite;
+          will-change: background-position;
+        }
+
         /* ── MOBILE only (phones) ── */
         @media (max-width: 640px) {
           .hero-icon     { width: clamp(350px, 82vw, 560px) !important; }
@@ -443,6 +487,8 @@ export default function AmpariaPage() {
           zIndex: 10,
           marginTop: "100vh",
           background: "transparent",
+          backdropFilter: "blur(0px)",
+          WebkitBackdropFilter: "blur(0px)",
           borderTop: "1px solid rgba(255,255,255,0.04)",
         }}
       >
