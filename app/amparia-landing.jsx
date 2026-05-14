@@ -55,7 +55,7 @@ export default function AmpariaPage() {
 
   const heroScale   = useSpring(rawScale,   { stiffness: 280, damping: 24, mass: 0.15 });
   const heroOpacity = useSpring(rawOpacity, { stiffness: 280, damping: 24, mass: 0.15 });
-  const heroBlur    = useSpring(rawBlur,    { stiffness: 320, damping: 22, mass: 0.1 });
+  const heroBlur    = useSpring(rawBlur,    { stiffness: 800, damping: 30, mass: 0.05 });
   const heroY       = useSpring(rawY,       { stiffness: 280, damping: 24, mass: 0.15 });
 
   const [error, setError] = useState("");
