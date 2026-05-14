@@ -88,11 +88,11 @@ function PhoneTiltCard({ image, label, badge, isTouch }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "24px" }}>
       {isTouch ? (
-        <div style={{ width: "260px" }}>{phoneFrame}</div>
+        <div style={{ width: "221px" }}>{phoneFrame}</div>
       ) : (
         <div ref={ref} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} style={{ perspective: "1000px", cursor: "none" }}>
           <motion.div
-            style={{ rotateX, rotateY, transformStyle: "preserve-3d", position: "relative", width: "260px" }}
+            style={{ rotateX, rotateY, transformStyle: "preserve-3d", position: "relative", width: "221px" }}
             whileHover={{ scale: 1.03 }}
             transition={{ scale: { type: "spring", stiffness: 200, damping: 25 } }}
           >
