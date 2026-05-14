@@ -2,12 +2,12 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AMPARIA — Vigilancia Inteligente",
-  description: "El primer aviso llega en 3 segundos. AMPARIA protege tu patrimonio con IA.",
+  title: "AMPARIA",
+  description: "Los que protegen lo que otros no pueden perder.",
   metadataBase: new URL("https://www.amparia.app"),
   openGraph: {
-    title: "AMPARIA — Vigilancia Inteligente",
-    description: "El primer aviso llega en 3 segundos. AMPARIA protege tu patrimonio con IA.",
+    title: "AMPARIA",
+    description: "Los que protegen lo que otros no pueden perder.",
     url: "https://www.amparia.app",
     siteName: "AMPARIA",
     images: [
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AMPARIA — Vigilancia Inteligente",
-    description: "El primer aviso llega en 3 segundos. AMPARIA protege tu patrimonio con IA.",
+    title: "AMPARIA",
+    description: "Los que protegen lo que otros no pueden perder.",
     images: ["/og-image.png"],
   },
   robots: {
