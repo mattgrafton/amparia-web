@@ -90,9 +90,6 @@ export default function AmpariaPage() {
           .story-card-bottom { padding: 20px 14px !important; background: #080808; }
           .story-svg         { display: none !important; }
           .story-card-pair-b { margin-top: 40px !important; }
-
-          /* Fix 2: tighten label→content gap to match PhoneShowcase feel */
-          .section-label-gap { margin-bottom: 24px !important; }
         }
       `}</style>
 
@@ -433,16 +430,17 @@ export default function AmpariaPage() {
 
         {/* ── STORY CARDS ── */}
         <section id="features" style={{ padding: "100px 40px", maxWidth: "1400px", margin: "0 auto" }}>
-          {/* FIX 3: dim-label */}
-          <div className="section-label-gap" style={{ display: "flex", alignItems: "center", gap: "20px", marginBottom: "80px" }}>
-            <div style={{ width: "32px", height: "1px", background: "rgba(255,255,255,0.2)" }} />
-            <span className="dim-label" style={{
-              fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
-              fontWeight: 700, fontSize: "9px", letterSpacing: "0.45em",
-              color: "rgba(255,255,255,0.2)",
-            }}>
-              {lang === "es" ? "POR QUÉ AMPARIA" : "WHY AMPARIA"}
-            </span>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "16px", marginBottom: "48px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+              <div style={{ width: "32px", height: "1px", background: "rgba(255,255,255,0.2)" }} />
+              <span className="dim-label" style={{
+                fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
+                fontWeight: 700, fontSize: "9px", letterSpacing: "0.45em",
+                color: "rgba(255,255,255,0.2)",
+              }}>
+                {lang === "es" ? "POR QUÉ AMPARIA" : "WHY AMPARIA"}
+              </span>
+            </div>
           </div>
 
           {/* FIX 2: story-grid — mobile CSS restructures this into stacked pairs */}
@@ -463,15 +461,17 @@ export default function AmpariaPage() {
 
         {/* ── WAITLIST FORM ── */}
         <section id="waitlist" style={{ padding: "120px 40px 160px", maxWidth: "860px", margin: "0 auto" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "20px", marginBottom: "56px" }}>
-            <div style={{ width: "32px", height: "1px", background: "rgba(255,255,255,0.2)" }} />
-            <span className="dim-label" style={{
-              fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
-              fontWeight: 700, fontSize: "9px", letterSpacing: "0.45em",
-              color: "rgba(255,255,255,0.2)",
-            }}>
-              {lang === "es" ? "LISTA DE ESPERA" : "WAITLIST"}
-            </span>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "16px", marginBottom: "48px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+              <div style={{ width: "32px", height: "1px", background: "rgba(255,255,255,0.2)" }} />
+              <span className="dim-label" style={{
+                fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
+                fontWeight: 700, fontSize: "9px", letterSpacing: "0.45em",
+                color: "rgba(255,255,255,0.2)",
+              }}>
+                {lang === "es" ? "LISTA DE ESPERA" : "WAITLIST"}
+              </span>
+            </div>
           </div>
 
           <h2 style={{

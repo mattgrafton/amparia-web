@@ -177,8 +177,6 @@ export default function PhoneShowcase({ lang = "es" }) {
 
         @media (max-width: 640px) {
           .phone-side   { display: none !important; }
-          .phone-center { transform: none !important; }
-          .showcase-label-gap { margin-bottom: 24px !important; }
         }
 
         @keyframes phoneFloat {
@@ -247,7 +245,7 @@ export default function PhoneShowcase({ lang = "es" }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ delay: i * 0.15, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className={`${i === 1 ? "phone-center" : "phone-side"} phone-float-${i}`}
+            className={`${i === 0 ? "phone-center" : "phone-side"} phone-float-${i}`}
             style={{
               marginBottom: i === 1 ? "40px" : "0px",
             }}
