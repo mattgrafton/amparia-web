@@ -379,7 +379,7 @@ export default function AmpariaPage() {
         }} />
         <div style={{
           position: "absolute", inset: 0, zIndex: 3, pointerEvents: "none",
-          background: "linear-gradient(to bottom, rgba(72,72,72,0.88) 0%, rgba(48,48,48,0.82) 15%, rgba(20,20,20,0.75) 30%, rgba(5,5,5,0.88) 50%, rgba(0,0,0,0.96) 65%, #000 100%)",
+          background: "linear-gradient(to bottom, rgba(200,200,200,0.92) 0%, rgba(160,160,160,0.85) 12%, rgba(100,100,100,0.78) 25%, rgba(30,30,30,0.88) 45%, rgba(5,5,5,0.96) 65%, #000 100%)",
         }} />
 
         {/* ── LOGO CENTERPIECE ── */}
