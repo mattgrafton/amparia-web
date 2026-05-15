@@ -456,60 +456,6 @@ export default function AmpariaPage() {
               </div>
           </div>
 
-          <div style={{ position: "relative", marginTop: "8px", zIndex: 2, }}>
-            <span className="hero-wordmark hero-wordmark-animated" style={{
-              fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
-              fontWeight: 900,
-              fontSize: "clamp(32px, 6vw, 88px)",
-              letterSpacing: "0.55em",
-              textIndent: "0.55em",
-              display: "block",
-              lineHeight: 1,
-              color: "transparent",
-              backgroundImage: `linear-gradient(
-                90deg,
-                #2a2a2a 0%,
-                #707070 12%,
-                #c0c0c0 22%,
-                #ffffff 32%,
-                #e0e0e0 40%,
-                #ffffff 50%,
-                #e0e0e0 60%,
-                #ffffff 68%,
-                #c0c0c0 78%,
-                #707070 88%,
-                #2a2a2a 100%
-              )`,
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              filter: "drop-shadow(0px 1px 0px rgba(255,255,255,0.9)) drop-shadow(0px 3px 0px rgba(180,180,180,0.4)) drop-shadow(0px 5px 0px rgba(0,0,0,0.9)) drop-shadow(0px 8px 0px rgba(0,0,0,0.7)) drop-shadow(0px 12px 0px rgba(0,0,0,0.5)) drop-shadow(0px 20px 40px rgba(0,0,0,0.95))",
-            }}>
-              AMPARIA
-            </span>
-
-            <span className="hero-wordmark" style={{
-              fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
-              fontWeight: 900,
-              fontSize: "clamp(32px, 6vw, 88px)",
-              letterSpacing: "0.55em",
-              textIndent: "0.55em",
-              display: "block",
-              lineHeight: 1,
-              color: "transparent",
-              backgroundImage: "linear-gradient(180deg, rgba(160,160,160,0.18) 0%, transparent 60%)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              transform: "scaleY(-0.4)",
-              transformOrigin: "top center",
-              marginTop: "2px",
-              pointerEvents: "none",
-              opacity: 0.6,
-            }}>
-              AMPARIA
-            </span>
-          </div>
-        </div>
-
         <div style={{
           position: "absolute", inset: 0, zIndex: 5, pointerEvents: "none",
           background: "radial-gradient(ellipse 75% 70% at 50% 44%, transparent 15%, rgba(0,0,0,0.88) 100%)",
