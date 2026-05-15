@@ -98,58 +98,34 @@ export default function AmpariaPage() {
         /* Fix 1: dim labels readable on all screen sizes */
         .dim-label { color: rgba(255,255,255,0.45) !important; }
 
-        /* ── Hero logo flashlight sweep ── */
-        @keyframes logoGlance {
-          0%, 8% {
-            left: -60%;
-            opacity: 0;
+        /* ── Hero logo — premium metal breathe ── */
+        @keyframes metalBreathe {
+          0%, 100% {
+            filter:
+              brightness(1.0) contrast(1.08)
+              drop-shadow(0 4px 12px rgba(0,0,0,0.9))
+              drop-shadow(0 24px 60px rgba(0,0,0,0.7))
+              drop-shadow(0 0px 0px rgba(255,255,255,0));
           }
-          10% {
-            opacity: 1;
-          }
-          38% {
-            opacity: 1;
-          }
-          42%, 100% {
-            left: 130%;
-            opacity: 0;
+          50% {
+            filter:
+              brightness(1.18) contrast(1.04)
+              drop-shadow(0 4px 12px rgba(0,0,0,0.7))
+              drop-shadow(0 24px 60px rgba(0,0,0,0.5))
+              drop-shadow(0 0px 40px rgba(255,255,255,0.04));
           }
         }
         .hero-icon {
-          
+          animation: metalBreathe 9s ease-in-out infinite;
           will-change: filter;
           transform: translateZ(0);
           -webkit-transform: translateZ(0);
           backface-visibility: hidden;
           -webkit-backface-visibility: hidden;
-          position: relative;
         }
         .hero-icon-wrap {
           position: relative;
           display: inline-block;
-          overflow: hidden;
-        }
-        .hero-icon-wrap::after {
-          content: "";
-          position: absolute;
-          top: -10%;
-          left: -60%;
-          width: 40%;
-          height: 120%;
-          background: linear-gradient(
-            105deg,
-            transparent 0%,
-            rgba(255,255,255,0.0) 25%,
-            rgba(255,255,255,0.12) 48%,
-            rgba(255,255,255,0.18) 50%,
-            rgba(255,255,255,0.12) 52%,
-            rgba(255,255,255,0.0) 75%,
-            transparent 100%
-          );
-          animation: logoGlance 8s ease-in-out infinite;
-          pointer-events: none;
-          filter: blur(2px);
-          mix-blend-mode: screen;
         }
 
         /* ── Wordmark metallic shimmer ── */
