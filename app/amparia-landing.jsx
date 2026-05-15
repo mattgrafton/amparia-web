@@ -52,33 +52,13 @@ export default function AmpariaPage() {
 
   const [error, setError] = useState("");
 
-  // Fade hero — only on desktop (fixed), mobile uses relative
-  useEffect(() => {
-    const onHeroFade = () => {
-      const hero = document.getElementById("hero-fixed");
-      if (!hero) return;
-      if (window.innerWidth <= 1024) return; // skip on mobile/tablet
-      const pct = Math.min(1, window.scrollY / 700);
-      hero.style.opacity = 1 - (pct * 0.85);
-    };
-    window.addEventListener("scroll", onHeroFade, { passive: true });
-    return () => window.removeEventListener("scroll", onHeroFade);
-  }, []);
+  // Hero fade removed — caused flicker on fast scroll
+  // Hero stays at full opacity, content scrolls over it naturally
 
   // phone blur removed — too heavy on older iPhones
 
-  // Fade hero — only on desktop (fixed), mobile uses relative
-  useEffect(() => {
-    const onHeroFade = () => {
-      const hero = document.getElementById("hero-fixed");
-      if (!hero) return;
-      if (window.innerWidth <= 1024) return; // skip on mobile/tablet
-      const pct = Math.min(1, window.scrollY / 700);
-      hero.style.opacity = 1 - (pct * 0.85);
-    };
-    window.addEventListener("scroll", onHeroFade, { passive: true });
-    return () => window.removeEventListener("scroll", onHeroFade);
-  }, []);
+  // Hero fade removed — caused flicker on fast scroll
+  // Hero stays at full opacity, content scrolls over it naturally
 
   // phone blur removed — too heavy on older iPhones
 
@@ -161,6 +141,11 @@ export default function AmpariaPage() {
             height: 100vh !important;
             height: 100dvh !important;
           }
+        }
+
+        /* ── Hide grain on mobile — causes zoom artifacts ── */
+        @media (max-width: 1024px) {
+          .grain-svg { display: none !important; }
         }
 
         /* ── MOBILE only (phones) ── */
@@ -379,8 +364,8 @@ export default function AmpariaPage() {
         {/* ── DARK GRITTY STAGE ── */}
         <div style={{ position: "absolute", inset: 0, background: "#000000" }} />
 
-        {/* ── GRAIN TEXTURE — subtle grit on black ── */}
-        <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%", zIndex: 1, opacity: 0.06, pointerEvents: "none", mixBlendMode: "screen" }}>
+        {/* ── GRAIN TEXTURE — desktop only, causes artifacts on mobile zoom ── */}
+        <svg className="grain-svg" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", zIndex: 1, opacity: 0.06, pointerEvents: "none", mixBlendMode: "screen" }}>
           <filter id="heroGrain">
             <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch" />
             <feColorMatrix type="saturate" values="0" />
@@ -645,8 +630,8 @@ const storyData = {
     en: { tag: "SETUP",       headline: ["PLUG IN.", "DONE."],     sub: "No drilling. No technicians. No impossible configs. Other systems require professional installation and weeks of setup.",               punch: ["Competitors:", "PROFESSIONAL SETUP REQUIRED"],                   stat: "5 MIN", statLabel: "FULL SETUP" },
   },
   cost: {
-    es: { tag: "COSTE REAL",    headline: ["€4.99/MES.", "VS. €2.500."], sub: "El coste medio de honorarios legales por un caso de okupa supera los €2.500. Sin garantías de éxito.",      punch: ["Honorarios legales promedio:", "€1.250–€2.500", "por caso. Sin garantías."], stat: "€4.99", statLabel: "AL MES — BÁSICO" },
-    en: { tag: "REAL COST",     headline: ["€4.99/MO.",  "VS. €2,500."], sub: "Average legal fees per squatter case in Spain exceed €2,500. With no guarantee of success.",              punch: ["Average legal fees:", "€1,250–€2,500", "per case. No guarantees."],          stat: "€4.99", statLabel: "PER MONTH — BASIC" },
+    es: { tag: "COSTE REAL",    headline: ["€4.99/MES.", "VS. €2.500."], sub: "El coste medio de honorarios legales por un caso de okupa supera los €2.500. Sin garantías de éxito.",      punch: ["Honorarios legales promedio:", "€1.250–€2.500", "por caso. Sin garantías."], stat: "€4.99", statLabel: "AL MES" },
+    en: { tag: "REAL COST",     headline: ["€4.99/MO.",  "VS. €2,500."], sub: "Average legal fees per squatter case in Spain exceed €2,500. With no guarantee of success.",              punch: ["Average legal fees:", "€1,250–€2,500", "per case. No guarantees."],          stat: "€4.99", statLabel: "PER MONTH" },
   },
   evidence: {
     es: { tag: "EVIDENCIA LEGAL", headline: ["UN CLIC.", "JUICIO GANADO."], sub: "Exporta un paquete forense completo en segundos. Tu abogado lo tiene todo.",                        punch: ["Incluye:", "HASH SHA-256 · TIMESTAMP NTP · COORDENADAS GPS"], stat: "100%", statLabel: "ADMISIBLE EN TRIBUNAL" },

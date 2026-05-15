@@ -90,9 +90,9 @@ function PhoneTiltCard({ image, label, badge, isTouch }) {
       {isTouch ? (
         <div style={{ width: "243px" }}>{phoneFrame}</div>
       ) : (
-        <div ref={ref} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} style={{ cursor: "default" }}>
+        <div ref={ref} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} style={{ perspective: "1000px", cursor: "default" }}>
           <motion.div
-            style={{ position: "relative", width: "243px" }}
+            style={{ rotateX, rotateY, transformStyle: "preserve-3d", position: "relative", width: "243px" }}
             whileHover={{ scale: 1.03 }}
             transition={{ scale: { type: "spring", stiffness: 200, damping: 25 } }}
           >
@@ -133,6 +133,10 @@ export default function PhoneShowcase({ lang = "es" }) {
       <style>{`
         .dim-label { color: rgba(255,255,255,0.45) !important; }
 
+        /* Disable 3D on mobile to prevent crashes */
+        @media (max-width: 1024px) {
+          .phone-card-3d { transform-style: flat !important; perspective: none !important; }
+        }
         @keyframes phoneFloat {
           0%, 100% { transform: translateY(0px) rotate(var(--phone-rotate, 0deg)); }
           50%       { transform: translateY(-12px) rotate(var(--phone-rotate, 0deg)); }
@@ -142,8 +146,8 @@ export default function PhoneShowcase({ lang = "es" }) {
         .phone-float-2 { --phone-rotate:  3deg; animation: phoneFloat 5.5s ease-in-out infinite; animation-delay: 1.4s; }
 
         @keyframes phoneTilt {
-          0%, 100% { transform: rotateY(-4deg); }
-          50%       { transform: rotateY(4deg); }
+          0%, 100% { transform: perspective(800px) rotateY(-8deg); }
+          50%       { transform: perspective(800px) rotateY( 8deg); }
         }
 
         /* Mobile: stack vertically, tilt animation */
