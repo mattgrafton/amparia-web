@@ -148,6 +148,12 @@ export default function AmpariaPage() {
         /* ── Header stays fixed on all — lightweight, no crash ── */
         .site-header { -webkit-transform: translateZ(0); }
 
+        /* ── Desktop: hero is fixed so content needs top margin ── */
+        @media (min-width: 1025px) {
+          .scroll-layer { margin-top: 100vh !important; }
+          .hero-fixed-layer { position: fixed !important; }
+        }
+
         /* ── MOBILE: no fixed positioning — prevents iOS zoom crash ── */
         @media (max-width: 1024px) {
           .hero-fixed-layer {
@@ -159,6 +165,11 @@ export default function AmpariaPage() {
 
         /* ── MOBILE only (phones) ── */
         @media (max-width: 640px) {
+          .hero-icon {
+            animation: none !important;
+            filter: brightness(1.08) contrast(1.15) drop-shadow(0 8px 24px rgba(0,0,0,0.9)) !important;
+            will-change: auto !important;
+          }
           .hero-icon     { width: clamp(350px, 92vw, 700px) !important; }
           .hero-wordmark { font-size: clamp(40px, 10vw, 88px) !important; }
 
@@ -183,6 +194,11 @@ export default function AmpariaPage() {
 
         /* ── IPAD only ── */
         @media (min-width: 641px) and (max-width: 1024px) {
+          .hero-icon {
+            animation: none !important;
+            filter: brightness(1.08) contrast(1.15) drop-shadow(0 8px 24px rgba(0,0,0,0.9)) !important;
+            will-change: auto !important;
+          }
           .hero-icon     { width: clamp(580px, 76vw, 856px) !important; }
           .hero-wordmark { font-size: clamp(52px, 8vw, 100px) !important; }
 
@@ -461,7 +477,7 @@ export default function AmpariaPage() {
         style={{
           position: "relative",
           zIndex: 10,
-          marginTop: "100vh",
+          marginTop: "0",
           background: "linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, transparent 6%)",
           
           borderTop: "1px solid rgba(255,255,255,0.04)",
