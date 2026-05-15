@@ -104,7 +104,7 @@ export default function AmpariaPage() {
   };
 
   return (
-    <div style={{ background: "#000", minHeight: "100vh", overscrollBehaviorY: "none" }}>
+    <div style={{ background: "#000", minHeight: "100vh", overscrollBehaviorY: "none", touchAction: "pan-y pinch-zoom" }}>
 
       {/* ─────────────────────────────────────────
           MOBILE FIXES (max-width: 640px only)
@@ -379,7 +379,7 @@ export default function AmpariaPage() {
           display: "flex", flexDirection: "column",
           alignItems: "center", justifyContent: "center",
           gap: "0px",
-          transform: "perspective(1200px) rotateX(3deg)",
+          /* perspective removed for iOS zoom stability */
           paddingBottom: "80px",
         }}>
           <div style={{ position: "relative", overflow: "hidden", paddingBottom: "0px" }}>

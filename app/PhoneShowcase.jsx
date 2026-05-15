@@ -13,7 +13,7 @@ function PhoneTiltCard({ image, label, badge, isTouch }) {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const springConfig = { stiffness: 180, damping: 28, mass: 0.6 };
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [14, -14]), springConfig);
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [4, -4]), springConfig);
   const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-14, 14]), springConfig);
   const glareX = useSpring(useTransform(mouseX, [-0.5, 0.5], ["-30%", "130%"]), springConfig);
   const glareY = useSpring(useTransform(mouseY, [-0.5, 0.5], ["-30%", "130%"]), springConfig);
@@ -90,9 +90,9 @@ function PhoneTiltCard({ image, label, badge, isTouch }) {
       {isTouch ? (
         <div style={{ width: "243px" }}>{phoneFrame}</div>
       ) : (
-        <div ref={ref} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} style={{ perspective: "1000px", cursor: "none" }}>
+        <div ref={ref} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} style={{ cursor: "default" }}>
           <motion.div
-            style={{ rotateX, rotateY, transformStyle: "preserve-3d", position: "relative", width: "243px" }}
+            style={{ position: "relative", width: "243px" }}
             whileHover={{ scale: 1.03 }}
             transition={{ scale: { type: "spring", stiffness: 200, damping: 25 } }}
           >
@@ -142,8 +142,8 @@ export default function PhoneShowcase({ lang = "es" }) {
         .phone-float-2 { --phone-rotate:  3deg; animation: phoneFloat 5.5s ease-in-out infinite; animation-delay: 1.4s; }
 
         @keyframes phoneTilt {
-          0%, 100% { transform: perspective(800px) rotateY(-10deg); }
-          50%       { transform: perspective(800px) rotateY( 10deg); }
+          0%, 100% { transform: rotateY(-4deg); }
+          50%       { transform: rotateY(4deg); }
         }
 
         /* Mobile: stack vertically, tilt animation */
