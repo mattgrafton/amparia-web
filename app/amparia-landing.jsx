@@ -52,13 +52,33 @@ export default function AmpariaPage() {
 
   const [error, setError] = useState("");
 
-  // Hero fade removed — caused flicker on fast scroll
-  // Hero stays at full opacity, content scrolls over it naturally
+  // Desktop only: fade hero as content scrolls up
+  useEffect(() => {
+    const onHeroFade = () => {
+      if (window.innerWidth <= 1024) return;
+      const hero = document.getElementById("hero-fixed");
+      if (!hero) return;
+      const pct = Math.min(1, window.scrollY / 800);
+      hero.style.opacity = String(1 - pct * 0.82);
+    };
+    window.addEventListener("scroll", onHeroFade, { passive: true });
+    return () => window.removeEventListener("scroll", onHeroFade);
+  }, []);
 
   // phone blur removed — too heavy on older iPhones
 
-  // Hero fade removed — caused flicker on fast scroll
-  // Hero stays at full opacity, content scrolls over it naturally
+  // Desktop only: fade hero as content scrolls up
+  useEffect(() => {
+    const onHeroFade = () => {
+      if (window.innerWidth <= 1024) return;
+      const hero = document.getElementById("hero-fixed");
+      if (!hero) return;
+      const pct = Math.min(1, window.scrollY / 800);
+      hero.style.opacity = String(1 - pct * 0.82);
+    };
+    window.addEventListener("scroll", onHeroFade, { passive: true });
+    return () => window.removeEventListener("scroll", onHeroFade);
+  }, []);
 
   // phone blur removed — too heavy on older iPhones
 
@@ -134,24 +154,17 @@ export default function AmpariaPage() {
           .hero-fixed-layer { position: fixed !important; }
         }
 
-        /* ── Mobile/tablet: hero fades naturally as content scrolls over ── */
-        @media (max-width: 1024px) {
-          .hero-fixed-layer {
-            opacity: 0.92;
-          }
-          .scroll-layer {
-            background: #000;
-            position: relative;
-            z-index: 10;
-          }
-        }
-
-        /* ── MOBILE: no fixed positioning — prevents iOS zoom crash ── */
+        /* ── Mobile/tablet: relative hero, content scrolls over it ── */
         @media (max-width: 1024px) {
           .hero-fixed-layer {
             position: relative !important;
             height: 100vh !important;
             height: 100dvh !important;
+          }
+          .scroll-layer {
+            background: #000 !important;
+            position: relative !important;
+            z-index: 10 !important;
           }
         }
 
@@ -374,15 +387,10 @@ export default function AmpariaPage() {
         {/* grain removed — pure black background */}
 
         {/* ── VIGNETTE — darker edges, brighter center ── */}
-        <div style={{
+        {/* ── OVERHEAD STUDIO LIGHT — very subtle, desktop only ── */}
+        <div className="studio-light" style={{
           position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none",
-          background: "radial-gradient(ellipse 65% 65% at 50% 42%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.96) 100%)",
-        }} />
-
-        {/* ── OVERHEAD STUDIO LIGHT ── */}
-        <div style={{
-          position: "absolute", inset: 0, zIndex: 3, pointerEvents: "none",
-          background: "radial-gradient(ellipse 55% 45% at 50% 0%, rgba(255,255,255,0.055) 0%, transparent 65%)",
+          background: "radial-gradient(ellipse 55% 45% at 50% 0%, rgba(255,255,255,0.04) 0%, transparent 60%)",
         }} />
 
 
