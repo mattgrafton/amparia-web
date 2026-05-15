@@ -202,6 +202,8 @@ export default function AmpariaPage() {
 
 
 
+      <div aria-hidden="true" className="grain-overlay" />
+
       {/* ── NAVIGATION ── */}
       <header
         style={{
@@ -377,7 +379,7 @@ export default function AmpariaPage() {
         }} />
         <div style={{
           position: "absolute", inset: 0, zIndex: 3, pointerEvents: "none",
-          background: "linear-gradient(to bottom, rgba(38,38,38,0.92) 0%, rgba(25,25,25,0.75) 15%, rgba(12,12,12,0.45) 35%, transparent 55%, rgba(0,0,0,0.65) 100%)",
+          background: "linear-gradient(to bottom, rgba(72,72,72,0.88) 0%, rgba(48,48,48,0.80) 12%, rgba(24,24,24,0.70) 28%, rgba(8,8,8,0.50) 45%, transparent 60%, rgba(0,0,0,0.60) 100%)",
         }} />
 
         {/* ── LOGO CENTERPIECE ── */}
