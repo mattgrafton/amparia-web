@@ -99,36 +99,22 @@ export default function AmpariaPage() {
         .dim-label { color: rgba(255,255,255,0.45) !important; }
 
         /* ── Hero logo flashlight sweep ── */
-        @keyframes logoFlashlight {
-          0%   { --shine-x: -120%; }
-          100% { --shine-x: 220%; }
-        }
-        @keyframes logoShine {
-          0%, 15% {
-            filter:
-              brightness(1.05) contrast(1.12)
-              drop-shadow(0 2px 0 rgba(255,255,255,0.08))
-              drop-shadow(0 8px 24px rgba(0,0,0,0.95))
-              drop-shadow(0 48px 120px rgba(0,0,0,0.60));
+        @keyframes logoGlance {
+          0%, 100% {
+            opacity: 0;
+            transform: skewX(-12deg) translateX(-140%);
           }
-          40%, 60% {
-            filter:
-              brightness(1.55) contrast(1.05)
-              drop-shadow(0 0px 12px rgba(255,255,255,0.55))
-              drop-shadow(0 2px 0 rgba(255,255,255,0.70))
-              drop-shadow(0 8px 32px rgba(200,200,200,0.20))
-              drop-shadow(0 48px 120px rgba(0,0,0,0.40));
+          18%, 22% {
+            opacity: 1;
+            transform: skewX(-12deg) translateX(240%);
           }
-          85%, 100% {
-            filter:
-              brightness(1.05) contrast(1.12)
-              drop-shadow(0 2px 0 rgba(255,255,255,0.08))
-              drop-shadow(0 8px 24px rgba(0,0,0,0.95))
-              drop-shadow(0 48px 120px rgba(0,0,0,0.60));
+          23%, 99% {
+            opacity: 0;
+            transform: skewX(-12deg) translateX(240%);
           }
         }
         .hero-icon {
-          animation: logoShine 6s ease-in-out infinite;
+          
           will-change: filter;
           transform: translateZ(0);
           -webkit-transform: translateZ(0);
@@ -151,16 +137,16 @@ export default function AmpariaPage() {
           background: linear-gradient(
             105deg,
             transparent 0%,
-            rgba(255,255,255,0.0) 30%,
-            rgba(255,255,255,0.38) 50%,
-            rgba(255,255,255,0.0) 70%,
+            rgba(255,255,255,0.0) 20%,
+            rgba(255,255,255,0.18) 45%,
+            rgba(255,255,255,0.28) 50%,
+            rgba(255,255,255,0.18) 55%,
+            rgba(255,255,255,0.0) 80%,
             transparent 100%
           );
-          transform: skewX(-12deg);
-          animation: logoFlashlight 6s ease-in-out infinite;
+          animation: logoGlance 8s ease-in-out infinite;
           pointer-events: none;
-          border-radius: 50%;
-          filter: blur(8px);
+          filter: blur(3px);
         }
 
         /* ── Wordmark metallic shimmer ── */
@@ -407,7 +393,7 @@ export default function AmpariaPage() {
         }} />
         <div style={{
           position: "absolute", inset: 0, zIndex: 3, pointerEvents: "none",
-          background: "linear-gradient(to bottom, rgba(185,185,185,0.95) 0%, rgba(120,120,120,0.90) 10%, rgba(50,50,50,0.92) 22%, rgba(10,10,10,0.97) 38%, #000 52%, #000 100%)",
+          background: "linear-gradient(to bottom, rgba(180,180,180,0.95) 0%, rgba(100,100,100,0.95) 8%, rgba(20,20,20,1.0) 20%, #000000 32%, #000000 100%)",
         }} />
 
         {/* ── LOGO CENTERPIECE ── */}
@@ -437,7 +423,7 @@ export default function AmpariaPage() {
               className="hero-icon"
               style={{
                 position: "relative",
-                width: "clamp(220px, 38vw, 560px)",
+                width: "clamp(220px, 46vw, 672px)",
                 height: "auto",
                 display: "block",
                 zIndex: 1,
