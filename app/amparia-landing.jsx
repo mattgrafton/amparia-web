@@ -129,6 +129,10 @@ export default function AmpariaPage() {
         .hero-icon {
           animation: logoGlow 7s ease-in-out infinite;
           will-change: filter;
+          transform: translateZ(0);
+          -webkit-transform: translateZ(0);
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
         }
 
         /* ── Wordmark metallic shimmer ── */
@@ -140,6 +144,10 @@ export default function AmpariaPage() {
           background-size: 200% auto !important;
           animation: wordmarkShimmer 8s linear infinite;
           will-change: background-position;
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
         }
 
         /* ── MOBILE only (phones) ── */

@@ -63,3 +63,14 @@ html {
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
 }
+
+/* Prevent animation crashes on zoom */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+@media (hover: none) {
+  .hero-wordmark-animated {
+    animation: none !important;
+    background-position: center !important;
+  }
+}
