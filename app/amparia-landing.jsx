@@ -50,13 +50,13 @@ export default function AmpariaPage() {
   // Smooth spring-based scroll transforms for fluid hero transition
   const rawScale   = useTransform(scrollY, [200, 1100], [1, 0.82]);
   const rawOpacity = useTransform(scrollY, [200, 1100], [1, 0.55]);
-  const rawBlur    = useTransform(scrollY, [200, 700], [0, 18]);
+  const rawBlur    = useTransform(scrollY, [200, 700], [0, 0]); // disabled — too expensive
   const rawY       = useTransform(scrollY, [200, 1100], [0, -60]);
   const rawRotateX = useTransform(scrollY, [200, 1100], [0, 8]);
 
   const heroScale   = useSpring(rawScale,   { stiffness: 280, damping: 24, mass: 0.15 });
   const heroOpacity = useSpring(rawOpacity, { stiffness: 280, damping: 24, mass: 0.15 });
-  const heroBlur    = useSpring(rawBlur,    { stiffness: 800, damping: 30, mass: 0.05 });
+  // heroBlur removed — filter:blur on scroll kills GPU
   const heroY       = useSpring(rawY,       { stiffness: 280, damping: 24, mass: 0.15 });
   const heroRotateX = useSpring(rawRotateX, { stiffness: 280, damping: 24, mass: 0.15 });
 
@@ -349,7 +349,7 @@ export default function AmpariaPage() {
           scale: heroScale,
           opacity: heroOpacity,
           y: heroY,
-          filter: useTransform(heroBlur, v => `blur(${v}px)`),
+          // filter removed for scroll performance
         }}
       >
         {/* ── DARK GRITTY STAGE ── */}
@@ -464,8 +464,7 @@ export default function AmpariaPage() {
           zIndex: 10,
           marginTop: "100vh",
           background: "linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, transparent 6%)",
-          backdropFilter: "blur(0px)",
-          WebkitBackdropFilter: "blur(0px)",
+          
           borderTop: "1px solid rgba(255,255,255,0.04)",
         }}
       >
