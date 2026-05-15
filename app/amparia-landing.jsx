@@ -102,21 +102,24 @@ export default function AmpariaPage() {
         @keyframes metalBreathe {
           0%, 100% {
             filter:
-              brightness(1.0) contrast(1.08)
-              drop-shadow(0 4px 12px rgba(0,0,0,0.9))
-              drop-shadow(0 24px 60px rgba(0,0,0,0.7))
-              drop-shadow(0 0px 0px rgba(255,255,255,0));
+              brightness(1.10) contrast(1.18) saturate(0.85)
+              drop-shadow(0 2px 0px rgba(255,255,255,0.20))
+              drop-shadow(0 6px 6px rgba(0,0,0,0.99))
+              drop-shadow(0 20px 40px rgba(0,0,0,0.99))
+              drop-shadow(0 48px 96px rgba(0,0,0,0.90));
           }
           50% {
             filter:
-              brightness(1.18) contrast(1.04)
-              drop-shadow(0 4px 12px rgba(0,0,0,0.7))
-              drop-shadow(0 24px 60px rgba(0,0,0,0.5))
-              drop-shadow(0 0px 40px rgba(255,255,255,0.04));
+              brightness(1.22) contrast(1.12) saturate(0.85)
+              drop-shadow(0 2px 0px rgba(255,255,255,0.35))
+              drop-shadow(0 6px 6px rgba(0,0,0,0.95))
+              drop-shadow(0 20px 40px rgba(0,0,0,0.95))
+              drop-shadow(0 48px 96px rgba(0,0,0,0.80))
+              drop-shadow(0 0px 60px rgba(255,255,255,0.03));
           }
         }
         .hero-icon {
-          animation: metalBreathe 9s ease-in-out infinite;
+          animation: metalBreathe 10s ease-in-out infinite;
           will-change: filter;
           transform: translateZ(0);
           -webkit-transform: translateZ(0);
@@ -349,18 +352,34 @@ export default function AmpariaPage() {
           filter: useTransform(heroBlur, v => `blur(${v}px)`),
         }}
       >
-        {/* ── PURE BLACK STAGE ── */}
-        <div style={{ position: "absolute", inset: 0, background: "#000" }} />
+        {/* ── DARK GRITTY STAGE ── */}
+        <div style={{ position: "absolute", inset: 0, background: "#060606" }} />
 
-        {/* ── TOP LIGHT — subtle overhead spot, like studio lighting ── */}
+        {/* ── GRAIN TEXTURE overlay ── */}
+        <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%", zIndex: 1, opacity: 0.18, pointerEvents: "none" }}>
+          <filter id="heroGrain">
+            <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch" />
+            <feColorMatrix type="saturate" values="0" />
+            <feBlend in="SourceGraphic" mode="multiply" />
+          </filter>
+          <rect width="100%" height="100%" filter="url(#heroGrain)" />
+        </svg>
+
+        {/* ── VIGNETTE — darker edges, brighter center ── */}
         <div style={{
           position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none",
-          background: "radial-gradient(ellipse 60% 55% at 50% 0%, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 40%, transparent 70%)",
+          background: "radial-gradient(ellipse 70% 70% at 50% 42%, rgba(22,22,22,0) 0%, rgba(0,0,0,0.82) 100%)",
+        }} />
+
+        {/* ── OVERHEAD STUDIO LIGHT ── */}
+        <div style={{
+          position: "absolute", inset: 0, zIndex: 3, pointerEvents: "none",
+          background: "radial-gradient(ellipse 55% 45% at 50% 0%, rgba(255,255,255,0.055) 0%, transparent 65%)",
         }} />
 
         {/* ── LOGO CENTERPIECE ── */}
         <div style={{
-          position: "absolute", inset: 0, zIndex: 4,
+          position: "absolute", inset: 0, zIndex: 5,
           display: "flex", flexDirection: "column",
           alignItems: "center", justifyContent: "center",
           gap: "0px",
@@ -370,9 +389,18 @@ export default function AmpariaPage() {
           <div style={{ position: "relative", overflow: "hidden", paddingBottom: "0px" }}>
             <div style={{
               position: "absolute",
-              top: "-10%", left: "15%", right: "15%", bottom: "20%",
-              background: "radial-gradient(ellipse at 50% 30%, rgba(255,255,255,0.06) 0%, transparent 65%)",
-              filter: "blur(32px)",
+              top: "-5%", left: "20%", right: "20%", bottom: "30%",
+              background: "radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.03) 40%, transparent 70%)",
+              filter: "blur(28px)",
+              zIndex: 0,
+            }} />
+            {/* floor reflection */}
+            <div style={{
+              position: "absolute",
+              bottom: "-5%", left: "25%", right: "25%",
+              height: "30%",
+              background: "radial-gradient(ellipse at 50% 100%, rgba(255,255,255,0.04) 0%, transparent 70%)",
+              filter: "blur(20px)",
               zIndex: 0,
             }} />
 
@@ -391,12 +419,13 @@ export default function AmpariaPage() {
                 zIndex: 1,
                 marginBottom: "-18%",
                 filter: `
-                  brightness(1.08) contrast(1.15) saturate(0.9)
-                  drop-shadow(0 1px 0 rgba(255,255,255,0.15))
-                  drop-shadow(0 -1px 0 rgba(255,255,255,0.05))
-                  drop-shadow(0 12px 40px rgba(0,0,0,0.98))
-                  drop-shadow(0 32px 80px rgba(0,0,0,0.9))
-                  drop-shadow(0 60px 120px rgba(0,0,0,0.8))
+                  brightness(1.12) contrast(1.18) saturate(0.85)
+                  drop-shadow(0 2px 0px rgba(255,255,255,0.22))
+                  drop-shadow(0 -1px 0px rgba(255,255,255,0.08))
+                  drop-shadow(0 6px 6px rgba(0,0,0,0.99))
+                  drop-shadow(0 16px 32px rgba(0,0,0,0.99))
+                  drop-shadow(0 32px 64px rgba(0,0,0,0.95))
+                  drop-shadow(0 64px 120px rgba(0,0,0,0.85))
                 `,
                 userSelect: "none",
               }}
