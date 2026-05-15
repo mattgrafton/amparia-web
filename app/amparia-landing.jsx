@@ -104,7 +104,7 @@ export default function AmpariaPage() {
   };
 
   return (
-    <div style={{ background: "#000", minHeight: "100vh", overscrollBehaviorY: "none", touchAction: "pan-y pinch-zoom" }}>
+    <div style={{ background: "#000", minHeight: "100vh", overscrollBehaviorY: "none", touchAction: "auto" }}>
 
       {/* ─────────────────────────────────────────
           MOBILE FIXES (max-width: 640px only)
