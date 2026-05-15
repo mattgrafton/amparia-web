@@ -62,6 +62,20 @@ export default function AmpariaPage() {
 
   const [error, setError] = useState("");
 
+  // Blur hero background as user scrolls down
+  useEffect(() => {
+    const onHeroBlur = () => {
+      const el = document.getElementById("hero-depth-blur");
+      if (!el) return;
+      const pct = Math.min(1, window.scrollY / 600);
+      const blur = pct * 12;
+      el.style.backdropFilter = `blur(${blur}px)`;
+      el.style.webkitBackdropFilter = `blur(${blur}px)`;
+    };
+    window.addEventListener("scroll", onHeroBlur, { passive: true });
+    return () => window.removeEventListener("scroll", onHeroBlur);
+  }, []);
+
   // Blur phone section slightly as user scrolls into it
   useEffect(() => {
     const onScroll = () => {
@@ -74,6 +88,20 @@ export default function AmpariaPage() {
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Blur hero background as user scrolls down
+  useEffect(() => {
+    const onHeroBlur = () => {
+      const el = document.getElementById("hero-depth-blur");
+      if (!el) return;
+      const pct = Math.min(1, window.scrollY / 600);
+      const blur = pct * 12;
+      el.style.backdropFilter = `blur(${blur}px)`;
+      el.style.webkitBackdropFilter = `blur(${blur}px)`;
+    };
+    window.addEventListener("scroll", onHeroBlur, { passive: true });
+    return () => window.removeEventListener("scroll", onHeroBlur);
   }, []);
 
   // Blur phone section slightly as user scrolls into it
@@ -202,7 +230,7 @@ export default function AmpariaPage() {
 
         /* ── IPAD only ── */
         @media (min-width: 641px) and (max-width: 1024px) {
-          .hero-icon     { width: clamp(504px, 66vw, 744px) !important; }
+          .hero-icon     { width: clamp(580px, 76vw, 856px) !important; }
           .hero-wordmark { font-size: clamp(52px, 8vw, 100px) !important; }
 
           .story-grid {
@@ -402,6 +430,15 @@ export default function AmpariaPage() {
         <div style={{
           position: "absolute", inset: 0, zIndex: 3, pointerEvents: "none",
           background: "radial-gradient(ellipse 55% 45% at 50% 0%, rgba(255,255,255,0.055) 0%, transparent 65%)",
+        }} />
+
+        {/* ── SCROLL DEPTH BLUR — deepens as content scrolls ── */}
+        <div id="hero-depth-blur" style={{
+          position: "absolute", inset: 0, zIndex: 6, pointerEvents: "none",
+          backdropFilter: "blur(0px)",
+          WebkitBackdropFilter: "blur(0px)",
+          transition: "backdrop-filter 0.15s linear, -webkit-backdrop-filter 0.15s linear",
+          background: "transparent",
         }} />
 
         {/* ── LOGO CENTERPIECE ── */}
