@@ -78,3 +78,9 @@ html {
   will-change: auto;
   transform: translateZ(0);
 }
+
+@media (max-width: 1024px) {
+  .grain-overlay {
+    display: none !important;
+  }
+}
