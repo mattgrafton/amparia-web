@@ -50,6 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="preload" as="image" href="/cement.jpg" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <script defer data-domain="amparia.app" src="https://plausible.io/js/script.js"></script>
         <link rel="preload" as="image" href="/amparia-icon.png" />
         <link rel="preload" as="image" href="/IMG_4680.png" />
         <link rel="preload" as="image" href="/IMG_4681.png" />
