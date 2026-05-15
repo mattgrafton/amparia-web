@@ -52,15 +52,14 @@ export default function AmpariaPage() {
 
   const [error, setError] = useState("");
 
-  // All screens: fade hero as content scrolls, settle at 15% so logo ghosts behind
+  // Desktop only: fade hero as content scrolls up
   useEffect(() => {
     const onHeroFade = () => {
+      if (window.innerWidth <= 1024) return;
       const hero = document.getElementById("hero-fixed");
       if (!hero) return;
-      const maxScroll = window.innerWidth <= 1024 ? 600 : 800;
-      const minOpacity = window.innerWidth <= 1024 ? 0.15 : 0.15;
-      const pct = Math.min(1, window.scrollY / maxScroll);
-      hero.style.opacity = String(1 - pct * (1 - minOpacity));
+      const pct = Math.min(1, window.scrollY / 800);
+      hero.style.opacity = String(1 - pct * 0.82);
     };
     window.addEventListener("scroll", onHeroFade, { passive: true });
     return () => window.removeEventListener("scroll", onHeroFade);
@@ -68,15 +67,14 @@ export default function AmpariaPage() {
 
   // phone blur removed — too heavy on older iPhones
 
-  // All screens: fade hero as content scrolls, settle at 15% so logo ghosts behind
+  // Desktop only: fade hero as content scrolls up
   useEffect(() => {
     const onHeroFade = () => {
+      if (window.innerWidth <= 1024) return;
       const hero = document.getElementById("hero-fixed");
       if (!hero) return;
-      const maxScroll = window.innerWidth <= 1024 ? 600 : 800;
-      const minOpacity = window.innerWidth <= 1024 ? 0.15 : 0.15;
-      const pct = Math.min(1, window.scrollY / maxScroll);
-      hero.style.opacity = String(1 - pct * (1 - minOpacity));
+      const pct = Math.min(1, window.scrollY / 800);
+      hero.style.opacity = String(1 - pct * 0.82);
     };
     window.addEventListener("scroll", onHeroFade, { passive: true });
     return () => window.removeEventListener("scroll", onHeroFade);
@@ -150,18 +148,23 @@ export default function AmpariaPage() {
         /* ── Header stays fixed on all — lightweight, no crash ── */
         .site-header { -webkit-transform: translateZ(0); }
 
-        /* ── All screens: hero is fixed, content starts below ── */
-        .scroll-layer { margin-top: 100vh; }
-
-        /* ── Desktop: full opacity hero, fades on scroll via JS ── */
+        /* ── Desktop: hero is fixed so content needs top margin ── */
         @media (min-width: 1025px) {
-          .hero-fixed-layer { opacity: 1; }
+          .scroll-layer { margin-top: 100vh !important; }
+          .hero-fixed-layer { position: fixed !important; }
         }
 
-        /* ── Mobile/tablet: hero fixed, fades via JS ── */
+        /* ── Mobile/tablet: relative hero, content scrolls over it ── */
         @media (max-width: 1024px) {
           .hero-fixed-layer {
-            opacity: 1;
+            position: relative !important;
+            height: 100vh !important;
+            height: 100dvh !important;
+          }
+          .scroll-layer {
+            background: #000 !important;
+            position: relative !important;
+            z-index: 10 !important;
           }
         }
 
@@ -468,7 +471,7 @@ export default function AmpariaPage() {
         style={{
           position: "relative",
           zIndex: 10,
-          background: "#000",
+          background: "linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, transparent 6%)",
           borderTop: "1px solid rgba(255,255,255,0.04)",
         }}
       >
