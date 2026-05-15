@@ -52,14 +52,13 @@ export default function AmpariaPage() {
 
   const [error, setError] = useState("");
 
-  // Desktop only: fade hero as content scrolls up
+  // All screens: fade hero to 15% as content scrolls up
   useEffect(() => {
     const onHeroFade = () => {
-      if (window.innerWidth <= 1024) return;
       const hero = document.getElementById("hero-fixed");
       if (!hero) return;
-      const pct = Math.min(1, window.scrollY / 800);
-      hero.style.opacity = String(1 - pct * 0.82);
+      const pct = Math.min(1, window.scrollY / 700);
+      hero.style.opacity = String(1 - pct * 0.85);
     };
     window.addEventListener("scroll", onHeroFade, { passive: true });
     return () => window.removeEventListener("scroll", onHeroFade);
@@ -67,14 +66,13 @@ export default function AmpariaPage() {
 
   // phone blur removed — too heavy on older iPhones
 
-  // Desktop only: fade hero as content scrolls up
+  // All screens: fade hero to 15% as content scrolls up
   useEffect(() => {
     const onHeroFade = () => {
-      if (window.innerWidth <= 1024) return;
       const hero = document.getElementById("hero-fixed");
       if (!hero) return;
-      const pct = Math.min(1, window.scrollY / 800);
-      hero.style.opacity = String(1 - pct * 0.82);
+      const pct = Math.min(1, window.scrollY / 700);
+      hero.style.opacity = String(1 - pct * 0.85);
     };
     window.addEventListener("scroll", onHeroFade, { passive: true });
     return () => window.removeEventListener("scroll", onHeroFade);
@@ -154,23 +152,16 @@ export default function AmpariaPage() {
           .hero-fixed-layer { position: fixed !important; }
         }
 
-        /* ── Mobile/tablet: relative hero, content scrolls over it ── */
+        /* ── Mobile/tablet: hero stays fixed like desktop ── */
         @media (max-width: 1024px) {
-          .hero-fixed-layer {
-            position: relative !important;
-            height: 100vh !important;
-            height: 100dvh !important;
-          }
-          .scroll-layer {
-            background: #000 !important;
-            position: relative !important;
-            z-index: 10 !important;
-          }
           .studio-light,
           .logo-glow,
           .hero-vignette,
           .hero-bottom-fade {
             display: none !important;
+          }
+          .scroll-layer {
+            margin-top: 100vh !important;
           }
         }
 
