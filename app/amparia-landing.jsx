@@ -134,6 +134,18 @@ export default function AmpariaPage() {
           .hero-fixed-layer { position: fixed !important; }
         }
 
+        /* ── Mobile/tablet: hero fades naturally as content scrolls over ── */
+        @media (max-width: 1024px) {
+          .hero-fixed-layer {
+            opacity: 0.92;
+          }
+          .scroll-layer {
+            background: #000;
+            position: relative;
+            z-index: 10;
+          }
+        }
+
         /* ── MOBILE: no fixed positioning — prevents iOS zoom crash ── */
         @media (max-width: 1024px) {
           .hero-fixed-layer {
@@ -141,11 +153,6 @@ export default function AmpariaPage() {
             height: 100vh !important;
             height: 100dvh !important;
           }
-        }
-
-        /* ── Hide grain on mobile — causes zoom artifacts ── */
-        @media (max-width: 1024px) {
-          .grain-svg { display: none !important; }
         }
 
         /* ── MOBILE only (phones) ── */
@@ -364,14 +371,7 @@ export default function AmpariaPage() {
         {/* ── DARK GRITTY STAGE ── */}
         <div style={{ position: "absolute", inset: 0, background: "#000000" }} />
 
-        {/* ── GRAIN TEXTURE — desktop only, causes artifacts on mobile zoom ── */}
-        <svg className="grain-svg" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", zIndex: 1, opacity: 0.06, pointerEvents: "none", mixBlendMode: "screen" }}>
-          <filter id="heroGrain">
-            <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch" />
-            <feColorMatrix type="saturate" values="0" />
-          </filter>
-          <rect width="100%" height="100%" filter="url(#heroGrain)" fill="white" />
-        </svg>
+        {/* grain removed — pure black background */}
 
         {/* ── VIGNETTE — darker edges, brighter center ── */}
         <div style={{
