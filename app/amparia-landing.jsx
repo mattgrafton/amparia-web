@@ -166,7 +166,9 @@ export default function AmpariaPage() {
             position: relative !important;
             z-index: 10 !important;
           }
-          .studio-light {
+          .studio-light,
+          .logo-glow,
+          .hero-vignette {
             display: none !important;
           }
         }
@@ -408,7 +410,7 @@ export default function AmpariaPage() {
           paddingBottom: "80px",
         }}>
           <div style={{ position: "relative", overflow: "hidden", paddingBottom: "0px" }}>
-            <div style={{
+            <div className="logo-glow" style={{
               position: "absolute",
               top: "-5%", left: "20%", right: "20%", bottom: "30%",
               background: "radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.03) 40%, transparent 70%)",
@@ -445,7 +447,7 @@ export default function AmpariaPage() {
           </div>
         </div>
 
-        <div style={{
+        <div className="hero-vignette" style={{
           position: "absolute", inset: 0, zIndex: 5, pointerEvents: "none",
           background: "radial-gradient(ellipse 80% 60% at 50% 50%, transparent 40%, rgba(0,0,0,0.6) 100%)",
         }} />
