@@ -55,7 +55,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preload" as="image" href="/IMG_4680.png" />
         <link rel="preload" as="image" href="/IMG_4681.png" />
         <link rel="preload" as="image" href="/IMG_4682.png" />
-        <script defer data-domain="amparia.app" src="https://plausible.io/js/script.js"></script>
         <script dangerouslySetInnerHTML={{ __html: "if (history.scrollRestoration) history.scrollRestoration = \"manual\";" }} />
       </head>
       <body style={{ background: "#000", margin: 0 }}>{children}</body>
