@@ -349,30 +349,13 @@ export default function AmpariaPage() {
           filter: useTransform(heroBlur, v => `blur(${v}px)`),
         }}
       >
-        {/* ── REAL CEMENT PHOTO — full bleed, darkened ── */}
-        <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
-          <img
-            src="/cement.jpg"
-            alt=""
-            aria-hidden="true"
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "center 30%",
-              display: "block",
-              filter: "grayscale(100%) brightness(0.28) contrast(1.3)",
-            }}
-          />
-        </div>
+        {/* ── PURE BLACK STAGE ── */}
+        <div style={{ position: "absolute", inset: 0, background: "#000" }} />
 
+        {/* ── TOP LIGHT — subtle overhead spot, like studio lighting ── */}
         <div style={{
           position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none",
-          background: "linear-gradient(125deg, rgba(255,255,255,0.04) 0%, transparent 40%, rgba(0,0,0,0.4) 100%)",
-        }} />
-        <div style={{
-          position: "absolute", inset: 0, zIndex: 3, pointerEvents: "none",
-          background: "linear-gradient(to bottom, rgb(175,175,175) 0%, rgb(90,90,90) 7%, rgb(10,10,10) 18%, rgb(0,0,0) 28%, rgb(0,0,0) 100%)",
+          background: "radial-gradient(ellipse 60% 55% at 50% 0%, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 40%, transparent 70%)",
         }} />
 
         {/* ── LOGO CENTERPIECE ── */}
@@ -387,9 +370,9 @@ export default function AmpariaPage() {
           <div style={{ position: "relative", overflow: "hidden", paddingBottom: "0px" }}>
             <div style={{
               position: "absolute",
-              top: "20%", left: "10%", right: "10%", bottom: "14%",
-              background: "radial-gradient(ellipse at center, rgba(180,180,180,0.12) 0%, transparent 70%)",
-              filter: "blur(24px)",
+              top: "-10%", left: "15%", right: "15%", bottom: "20%",
+              background: "radial-gradient(ellipse at 50% 30%, rgba(255,255,255,0.06) 0%, transparent 65%)",
+              filter: "blur(32px)",
               zIndex: 0,
             }} />
 
@@ -408,12 +391,12 @@ export default function AmpariaPage() {
                 zIndex: 1,
                 marginBottom: "-18%",
                 filter: `
-                  brightness(1.15)
-                  contrast(1.12)
-                  drop-shadow(0 2px 0 rgba(255,255,255,0.1))
-                  drop-shadow(0 8px 24px rgba(0,0,0,0.95))
-                  drop-shadow(0 24px 64px rgba(0,0,0,0.8))
-                  drop-shadow(0 48px 120px rgba(0,0,0,0.6))
+                  brightness(1.08) contrast(1.15) saturate(0.9)
+                  drop-shadow(0 1px 0 rgba(255,255,255,0.15))
+                  drop-shadow(0 -1px 0 rgba(255,255,255,0.05))
+                  drop-shadow(0 12px 40px rgba(0,0,0,0.98))
+                  drop-shadow(0 32px 80px rgba(0,0,0,0.9))
+                  drop-shadow(0 60px 120px rgba(0,0,0,0.8))
                 `,
                 userSelect: "none",
               }}
@@ -424,7 +407,7 @@ export default function AmpariaPage() {
 
         <div style={{
           position: "absolute", inset: 0, zIndex: 5, pointerEvents: "none",
-          background: "radial-gradient(ellipse 75% 70% at 50% 44%, transparent 15%, rgba(0,0,0,0.88) 100%)",
+          background: "radial-gradient(ellipse 80% 60% at 50% 50%, transparent 40%, rgba(0,0,0,0.6) 100%)",
         }} />
 
         <div style={{
