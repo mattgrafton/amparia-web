@@ -462,7 +462,6 @@ export default function AmpariaPage() {
         style={{
           position: "relative",
           zIndex: 10,
-          marginTop: "0",
           background: "linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, transparent 6%)",
           
           borderTop: "1px solid rgba(255,255,255,0.04)",
