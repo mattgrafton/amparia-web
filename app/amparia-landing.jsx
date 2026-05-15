@@ -353,22 +353,21 @@ export default function AmpariaPage() {
         }}
       >
         {/* ── DARK GRITTY STAGE ── */}
-        <div style={{ position: "absolute", inset: 0, background: "#060606" }} />
+        <div style={{ position: "absolute", inset: 0, background: "#000000" }} />
 
-        {/* ── GRAIN TEXTURE overlay ── */}
-        <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%", zIndex: 1, opacity: 0.18, pointerEvents: "none" }}>
+        {/* ── GRAIN TEXTURE — subtle grit on black ── */}
+        <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%", zIndex: 1, opacity: 0.06, pointerEvents: "none", mixBlendMode: "screen" }}>
           <filter id="heroGrain">
-            <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch" />
+            <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch" />
             <feColorMatrix type="saturate" values="0" />
-            <feBlend in="SourceGraphic" mode="multiply" />
           </filter>
-          <rect width="100%" height="100%" filter="url(#heroGrain)" />
+          <rect width="100%" height="100%" filter="url(#heroGrain)" fill="white" />
         </svg>
 
         {/* ── VIGNETTE — darker edges, brighter center ── */}
         <div style={{
           position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none",
-          background: "radial-gradient(ellipse 70% 70% at 50% 42%, rgba(22,22,22,0) 0%, rgba(0,0,0,0.82) 100%)",
+          background: "radial-gradient(ellipse 65% 65% at 50% 42%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.96) 100%)",
         }} />
 
         {/* ── OVERHEAD STUDIO LIGHT ── */}
