@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import PhoneShowcase from "./PhoneShowcase";
-import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
+import { motion, useScroll, AnimatePresence } from "framer-motion";
 
 const translations = {
   es: {
@@ -48,30 +48,21 @@ export default function AmpariaPage() {
   const { scrollY } = useScroll();
 
   // Smooth spring-based scroll transforms for fluid hero transition
-  const rawScale   = useTransform(scrollY, [200, 1100], [1, 0.82]);
-  const rawOpacity = useTransform(scrollY, [200, 1100], [1, 0.55]);
-  const rawBlur    = useTransform(scrollY, [200, 700], [0, 0]); // disabled — too expensive
-  const rawY       = useTransform(scrollY, [200, 1100], [0, -60]);
-  const rawRotateX = useTransform(scrollY, [200, 1100], [0, 8]);
-
-  const heroScale   = useSpring(rawScale,   { stiffness: 280, damping: 24, mass: 0.15 });
-  const heroOpacity = useSpring(rawOpacity, { stiffness: 280, damping: 24, mass: 0.15 });
-  // heroBlur removed — filter:blur on scroll kills GPU
-  const heroY       = useSpring(rawY,       { stiffness: 280, damping: 24, mass: 0.15 });
-  const heroRotateX = useSpring(rawRotateX, { stiffness: 280, damping: 24, mass: 0.15 });
+  // all spring scroll transforms removed — fixed hero, CSS opacity only
 
   const [error, setError] = useState("");
 
-  // Fade hero to black smoothly as user scrolls
+  // Fade hero gently — stays visible at 15% behind content
   useEffect(() => {
-    const onHeroBlur = () => {
-      const el = document.getElementById("hero-depth-blur");
-      if (!el) return;
-      const pct = Math.min(1, window.scrollY / 500);
-      el.style.opacity = pct;
+    const onHeroFade = () => {
+      const hero = document.getElementById("hero-fixed");
+      if (!hero) return;
+      const pct = Math.min(1, window.scrollY / 700);
+      // fade from 1 down to 0.15 — logo still ghosted behind content
+      hero.style.opacity = 1 - (pct * 0.85);
     };
-    window.addEventListener("scroll", onHeroBlur, { passive: true });
-    return () => window.removeEventListener("scroll", onHeroBlur);
+    window.addEventListener("scroll", onHeroFade, { passive: true });
+    return () => window.removeEventListener("scroll", onHeroFade);
   }, []);
 
   // Blur phone section slightly as user scrolls into it
@@ -88,16 +79,17 @@ export default function AmpariaPage() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Fade hero to black smoothly as user scrolls
+  // Fade hero gently — stays visible at 15% behind content
   useEffect(() => {
-    const onHeroBlur = () => {
-      const el = document.getElementById("hero-depth-blur");
-      if (!el) return;
-      const pct = Math.min(1, window.scrollY / 500);
-      el.style.opacity = pct;
+    const onHeroFade = () => {
+      const hero = document.getElementById("hero-fixed");
+      if (!hero) return;
+      const pct = Math.min(1, window.scrollY / 700);
+      // fade from 1 down to 0.15 — logo still ghosted behind content
+      hero.style.opacity = 1 - (pct * 0.85);
     };
-    window.addEventListener("scroll", onHeroBlur, { passive: true });
-    return () => window.removeEventListener("scroll", onHeroBlur);
+    window.addEventListener("scroll", onHeroFade, { passive: true });
+    return () => window.removeEventListener("scroll", onHeroFade);
   }, []);
 
   // Blur phone section slightly as user scrolls into it
@@ -389,7 +381,8 @@ export default function AmpariaPage() {
       {/* ════════════════════════════════════════
           LAYER 1 — FIXED HERO
       ════════════════════════════════════════ */}
-      <motion.div
+      <div
+        id="hero-fixed"
         style={{
           position: "fixed",
           inset: 0,
@@ -398,10 +391,7 @@ export default function AmpariaPage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          scale: heroScale,
-          opacity: heroOpacity,
-          y: heroY,
-          // filter removed for scroll performance
+          willChange: "opacity",
         }}
       >
         {/* ── DARK GRITTY STAGE ── */}
@@ -428,13 +418,7 @@ export default function AmpariaPage() {
           background: "radial-gradient(ellipse 55% 45% at 50% 0%, rgba(255,255,255,0.055) 0%, transparent 65%)",
         }} />
 
-        {/* ── SCROLL FADE — smooth black fade as user scrolls ── */}
-        <div id="hero-depth-blur" style={{
-          position: "absolute", inset: 0, zIndex: 6, pointerEvents: "none",
-          background: "#000",
-          opacity: 0,
-          willChange: "opacity",
-        }} />
+
 
         {/* ── LOGO CENTERPIECE ── */}
         <div style={{
@@ -511,7 +495,7 @@ export default function AmpariaPage() {
         >
           <div style={{ width: "1px", height: "52px", background: "linear-gradient(to bottom, transparent, rgba(255,255,255,0.25))" }} />
         </motion.div>
-      </motion.div>
+      </div>
 
       {/* ════════════════════════════════════════
           LAYER 2 — SCROLLING GLASS LAYER
