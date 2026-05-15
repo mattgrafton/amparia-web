@@ -52,14 +52,15 @@ export default function AmpariaPage() {
 
   const [error, setError] = useState("");
 
-  // Desktop only: fade hero as content scrolls up
+  // All screens: fade hero as content scrolls, settle at 15% so logo ghosts behind
   useEffect(() => {
     const onHeroFade = () => {
-      if (window.innerWidth <= 1024) return;
       const hero = document.getElementById("hero-fixed");
       if (!hero) return;
-      const pct = Math.min(1, window.scrollY / 800);
-      hero.style.opacity = String(1 - pct * 0.82);
+      const maxScroll = window.innerWidth <= 1024 ? 600 : 800;
+      const minOpacity = window.innerWidth <= 1024 ? 0.15 : 0.15;
+      const pct = Math.min(1, window.scrollY / maxScroll);
+      hero.style.opacity = String(1 - pct * (1 - minOpacity));
     };
     window.addEventListener("scroll", onHeroFade, { passive: true });
     return () => window.removeEventListener("scroll", onHeroFade);
@@ -67,14 +68,15 @@ export default function AmpariaPage() {
 
   // phone blur removed — too heavy on older iPhones
 
-  // Desktop only: fade hero as content scrolls up
+  // All screens: fade hero as content scrolls, settle at 15% so logo ghosts behind
   useEffect(() => {
     const onHeroFade = () => {
-      if (window.innerWidth <= 1024) return;
       const hero = document.getElementById("hero-fixed");
       if (!hero) return;
-      const pct = Math.min(1, window.scrollY / 800);
-      hero.style.opacity = String(1 - pct * 0.82);
+      const maxScroll = window.innerWidth <= 1024 ? 600 : 800;
+      const minOpacity = window.innerWidth <= 1024 ? 0.15 : 0.15;
+      const pct = Math.min(1, window.scrollY / maxScroll);
+      hero.style.opacity = String(1 - pct * (1 - minOpacity));
     };
     window.addEventListener("scroll", onHeroFade, { passive: true });
     return () => window.removeEventListener("scroll", onHeroFade);
@@ -156,13 +158,10 @@ export default function AmpariaPage() {
           .hero-fixed-layer { opacity: 1; }
         }
 
-        /* ── Mobile/tablet: hero stays fixed, logo as watermark ── */
+        /* ── Mobile/tablet: hero fixed, fades via JS ── */
         @media (max-width: 1024px) {
           .hero-fixed-layer {
-            opacity: 0.35;
-          }
-          .scroll-layer {
-            background: transparent !important;
+            opacity: 1;
           }
         }
 
@@ -469,7 +468,7 @@ export default function AmpariaPage() {
         style={{
           position: "relative",
           zIndex: 10,
-          background: "rgba(0,0,0,0)",
+          background: "#000",
           borderTop: "1px solid rgba(255,255,255,0.04)",
         }}
       >
