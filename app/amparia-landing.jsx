@@ -168,7 +168,8 @@ export default function AmpariaPage() {
           }
           .studio-light,
           .logo-glow,
-          .hero-vignette {
+          .hero-vignette,
+          .hero-bottom-fade {
             display: none !important;
           }
         }
@@ -177,7 +178,7 @@ export default function AmpariaPage() {
         @media (max-width: 640px) {
           .hero-icon {
             animation: none !important;
-            filter: brightness(1.08) contrast(1.15) drop-shadow(0 8px 24px rgba(0,0,0,0.9)) !important;
+            filter: brightness(1.05) contrast(1.1) !important;
             will-change: auto !important;
           }
           .hero-icon     { width: clamp(350px, 92vw, 700px) !important; }
@@ -206,7 +207,7 @@ export default function AmpariaPage() {
         @media (min-width: 641px) and (max-width: 1024px) {
           .hero-icon {
             animation: none !important;
-            filter: brightness(1.08) contrast(1.15) drop-shadow(0 8px 24px rgba(0,0,0,0.9)) !important;
+            filter: brightness(1.05) contrast(1.1) !important;
             will-change: auto !important;
           }
           .hero-icon     { width: clamp(580px, 76vw, 856px) !important; }
@@ -452,7 +453,7 @@ export default function AmpariaPage() {
           background: "radial-gradient(ellipse 80% 60% at 50% 50%, transparent 40%, rgba(0,0,0,0.6) 100%)",
         }} />
 
-        <div style={{
+        <div className="hero-bottom-fade" style={{
           position: "absolute", bottom: 0, left: 0, right: 0,
           height: "30%", zIndex: 6, pointerEvents: "none",
           background: "linear-gradient(to bottom, transparent, #000)",
