@@ -62,15 +62,13 @@ export default function AmpariaPage() {
 
   const [error, setError] = useState("");
 
-  // Blur hero background as user scrolls down
+  // Fade hero to black smoothly as user scrolls
   useEffect(() => {
     const onHeroBlur = () => {
       const el = document.getElementById("hero-depth-blur");
       if (!el) return;
-      const pct = Math.min(1, window.scrollY / 600);
-      const blur = pct * 12;
-      el.style.backdropFilter = `blur(${blur}px)`;
-      el.style.webkitBackdropFilter = `blur(${blur}px)`;
+      const pct = Math.min(1, window.scrollY / 500);
+      el.style.opacity = pct;
     };
     window.addEventListener("scroll", onHeroBlur, { passive: true });
     return () => window.removeEventListener("scroll", onHeroBlur);
@@ -90,15 +88,13 @@ export default function AmpariaPage() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Blur hero background as user scrolls down
+  // Fade hero to black smoothly as user scrolls
   useEffect(() => {
     const onHeroBlur = () => {
       const el = document.getElementById("hero-depth-blur");
       if (!el) return;
-      const pct = Math.min(1, window.scrollY / 600);
-      const blur = pct * 12;
-      el.style.backdropFilter = `blur(${blur}px)`;
-      el.style.webkitBackdropFilter = `blur(${blur}px)`;
+      const pct = Math.min(1, window.scrollY / 500);
+      el.style.opacity = pct;
     };
     window.addEventListener("scroll", onHeroBlur, { passive: true });
     return () => window.removeEventListener("scroll", onHeroBlur);
@@ -432,13 +428,12 @@ export default function AmpariaPage() {
           background: "radial-gradient(ellipse 55% 45% at 50% 0%, rgba(255,255,255,0.055) 0%, transparent 65%)",
         }} />
 
-        {/* ── SCROLL DEPTH BLUR — deepens as content scrolls ── */}
+        {/* ── SCROLL FADE — smooth black fade as user scrolls ── */}
         <div id="hero-depth-blur" style={{
           position: "absolute", inset: 0, zIndex: 6, pointerEvents: "none",
-          backdropFilter: "blur(0px)",
-          WebkitBackdropFilter: "blur(0px)",
-          transition: "backdrop-filter 0.15s linear, -webkit-backdrop-filter 0.15s linear",
-          background: "transparent",
+          background: "#000",
+          opacity: 0,
+          willChange: "opacity",
         }} />
 
         {/* ── LOGO CENTERPIECE ── */}
