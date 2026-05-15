@@ -459,11 +459,11 @@ export default function AmpariaPage() {
       ════════════════════════════════════════ */}
       <div
         ref={containerRef}
+        className="scroll-layer"
         style={{
           position: "relative",
           zIndex: 10,
           background: "linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, transparent 6%)",
-          
           borderTop: "1px solid rgba(255,255,255,0.04)",
         }}
       >
