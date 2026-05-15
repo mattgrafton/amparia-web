@@ -3,6 +3,12 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "AMPARIA",
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
   description: "LOS QUE PROTEGEN LO QUE OTROS NO PUEDEN PERDER",
   metadataBase: new URL("https://www.amparia.app"),
   openGraph: {
