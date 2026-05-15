@@ -454,7 +454,6 @@ export default function AmpariaPage() {
               }}
             />
               </div>
-          </div>
 
         <div style={{
           position: "absolute", inset: 0, zIndex: 5, pointerEvents: "none",
