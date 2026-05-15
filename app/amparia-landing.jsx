@@ -148,23 +148,21 @@ export default function AmpariaPage() {
         /* ── Header stays fixed on all — lightweight, no crash ── */
         .site-header { -webkit-transform: translateZ(0); }
 
-        /* ── Desktop: hero is fixed so content needs top margin ── */
+        /* ── All screens: hero is fixed, content starts below ── */
+        .scroll-layer { margin-top: 100vh; }
+
+        /* ── Desktop: full opacity hero, fades on scroll via JS ── */
         @media (min-width: 1025px) {
-          .scroll-layer { margin-top: 100vh !important; }
-          .hero-fixed-layer { position: fixed !important; }
+          .hero-fixed-layer { opacity: 1; }
         }
 
-        /* ── Mobile/tablet: relative hero, content scrolls over it ── */
+        /* ── Mobile/tablet: hero stays fixed, logo as watermark ── */
         @media (max-width: 1024px) {
           .hero-fixed-layer {
-            position: relative !important;
-            height: 100vh !important;
-            height: 100dvh !important;
+            opacity: 0.35;
           }
           .scroll-layer {
-            background: #000 !important;
-            position: relative !important;
-            z-index: 10 !important;
+            background: transparent !important;
           }
         }
 
@@ -471,7 +469,7 @@ export default function AmpariaPage() {
         style={{
           position: "relative",
           zIndex: 10,
-          background: "linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, transparent 6%)",
+          background: "rgba(0,0,0,0)",
           borderTop: "1px solid rgba(255,255,255,0.04)",
         }}
       >
