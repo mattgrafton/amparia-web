@@ -52,13 +52,13 @@ export default function AmpariaPage() {
 
   const [error, setError] = useState("");
 
-  // Fade hero gently — stays visible at 15% behind content
+  // Fade hero — only on desktop (fixed), mobile uses relative
   useEffect(() => {
     const onHeroFade = () => {
       const hero = document.getElementById("hero-fixed");
       if (!hero) return;
+      if (window.innerWidth <= 1024) return; // skip on mobile/tablet
       const pct = Math.min(1, window.scrollY / 700);
-      // fade from 1 down to 0.15 — logo still ghosted behind content
       hero.style.opacity = 1 - (pct * 0.85);
     };
     window.addEventListener("scroll", onHeroFade, { passive: true });
@@ -67,13 +67,13 @@ export default function AmpariaPage() {
 
   // phone blur removed — too heavy on older iPhones
 
-  // Fade hero gently — stays visible at 15% behind content
+  // Fade hero — only on desktop (fixed), mobile uses relative
   useEffect(() => {
     const onHeroFade = () => {
       const hero = document.getElementById("hero-fixed");
       if (!hero) return;
+      if (window.innerWidth <= 1024) return; // skip on mobile/tablet
       const pct = Math.min(1, window.scrollY / 700);
-      // fade from 1 down to 0.15 — logo still ghosted behind content
       hero.style.opacity = 1 - (pct * 0.85);
     };
     window.addEventListener("scroll", onHeroFade, { passive: true });
@@ -145,6 +145,18 @@ export default function AmpariaPage() {
 
         /* wordmarkShimmer removed — wordmark deleted */
 
+        /* ── Header stays fixed on all — lightweight, no crash ── */
+        .site-header { -webkit-transform: translateZ(0); }
+
+        /* ── MOBILE: no fixed positioning — prevents iOS zoom crash ── */
+        @media (max-width: 1024px) {
+          .hero-fixed-layer {
+            position: relative !important;
+            height: 100vh !important;
+            height: 100dvh !important;
+          }
+        }
+
         /* ── MOBILE only (phones) ── */
         @media (max-width: 640px) {
           .hero-icon     { width: clamp(350px, 92vw, 700px) !important; }
@@ -199,6 +211,7 @@ export default function AmpariaPage() {
 
       {/* ── NAVIGATION ── */}
       <header
+        className="site-header"
         style={{
           position: "fixed",
           top: 0,
@@ -336,6 +349,7 @@ export default function AmpariaPage() {
       ════════════════════════════════════════ */}
       <div
         id="hero-fixed"
+        className="hero-fixed-layer"
         style={{
           position: "fixed",
           inset: 0,
@@ -344,7 +358,6 @@ export default function AmpariaPage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          willChange: "opacity",
         }}
       >
         {/* ── DARK GRITTY STAGE ── */}
