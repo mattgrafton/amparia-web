@@ -1,18 +1,41 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 export default function ResetPassword() {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [status, setStatus] = useState<"idle"|"loading"|"success"|"error">("idle");
   const [message, setMessage] = useState("");
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      { auth: { persistSession: true, detectSessionInUrl: true } }
+    );
+
+    const params = new URLSearchParams(window.location.search);
+    const tokenHash = params.get("token_hash");
+    const type = params.get("type");
+
+    if (tokenHash && type === "recovery") {
+      supabase.auth.verifyOtp({ token_hash: tokenHash, type: "recovery" })
+        .then(({ data, error }) => {
+          if (error || !data.session) {
+            setMessage("Enlace inválido o expirado. Solicita uno nuevo.");
+            setStatus("error");
+          } else {
+            setReady(true);
+          }
+        });
+    } else {
+      setMessage("Enlace inválido.");
+      setStatus("error");
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,18 +45,24 @@ export default function ResetPassword() {
       return;
     }
     if (password.length < 8) {
-      setMessage("La contraseña debe tener al menos 8 caracteres.");
+      setMessage("Mínimo 8 caracteres.");
       setStatus("error");
       return;
     }
     setStatus("loading");
+
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      { auth: { persistSession: true, detectSessionInUrl: true } }
+    );
+
     const { error } = await supabase.auth.updateUser({ password });
     if (error) {
       setMessage(error.message);
       setStatus("error");
     } else {
       setStatus("success");
-      setMessage("Contraseña actualizada correctamente.");
     }
   };
 
@@ -64,6 +93,16 @@ export default function ResetPassword() {
           <p style={{ color: "rgba(255,255,255,0.4)", fontSize: "11px", letterSpacing: "0.2em" }}>
             YA PUEDES CERRAR ESTA VENTANA
           </p>
+        </div>
+      ) : status === "error" && !ready ? (
+        <div style={{ textAlign: "center" }}>
+          <div style={{ color: "#E8423A", fontWeight: 900, fontSize: "13px", letterSpacing: "0.3em" }}>
+            {message.toUpperCase()}
+          </div>
+        </div>
+      ) : !ready ? (
+        <div style={{ color: "rgba(255,255,255,0.3)", fontSize: "9px", letterSpacing: "0.4em" }}>
+          VERIFICANDO...
         </div>
       ) : (
         <form onSubmit={handleSubmit} style={{
@@ -118,9 +157,9 @@ export default function ResetPassword() {
             }}
           />
 
-          {message && (
+          {message && status === "error" && (
             <p style={{
-              color: status === "error" ? "#E8423A" : "#fff",
+              color: "#E8423A",
               fontSize: "9px",
               letterSpacing: "0.3em",
               marginBottom: "24px",
