@@ -65,19 +65,7 @@ export default function AmpariaPage() {
     return () => window.removeEventListener("scroll", onHeroFade);
   }, []);
 
-  // Blur phone section slightly as user scrolls into it
-  useEffect(() => {
-    const onScroll = () => {
-      const el = document.getElementById("phone-section");
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
-      const pct = Math.max(0, Math.min(1, 1 - (rect.top / window.innerHeight)));
-      const blur = pct < 0.15 ? 0 : pct > 0.85 ? 0 : Math.sin(pct * Math.PI) * 3;
-      el.style.filter = `blur(${blur}px)`;
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  // phone blur removed — too heavy on older iPhones
 
   // Fade hero gently — stays visible at 15% behind content
   useEffect(() => {
@@ -92,19 +80,7 @@ export default function AmpariaPage() {
     return () => window.removeEventListener("scroll", onHeroFade);
   }, []);
 
-  // Blur phone section slightly as user scrolls into it
-  useEffect(() => {
-    const onScroll = () => {
-      const el = document.getElementById("phone-section");
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
-      const pct = Math.max(0, Math.min(1, 1 - (rect.top / window.innerHeight)));
-      const blur = pct < 0.15 ? 0 : pct > 0.85 ? 0 : Math.sin(pct * Math.PI) * 3;
-      el.style.filter = `blur(${blur}px)`;
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  // phone blur removed — too heavy on older iPhones
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -145,26 +121,18 @@ export default function AmpariaPage() {
         /* ── Hero logo — premium metal breathe ── */
         @keyframes metalBreathe {
           0%, 100% {
-            filter:
-              brightness(1.10) contrast(1.18) saturate(0.85)
-              drop-shadow(0 2px 0px rgba(255,255,255,0.20))
-              drop-shadow(0 6px 6px rgba(0,0,0,0.99))
-              drop-shadow(0 20px 40px rgba(0,0,0,0.99))
-              drop-shadow(0 48px 96px rgba(0,0,0,0.90));
+            filter: brightness(1.08) contrast(1.15)
+              drop-shadow(0 2px 0px rgba(255,255,255,0.18))
+              drop-shadow(0 16px 40px rgba(0,0,0,0.95));
           }
           50% {
-            filter:
-              brightness(1.22) contrast(1.12) saturate(0.85)
-              drop-shadow(0 2px 0px rgba(255,255,255,0.35))
-              drop-shadow(0 6px 6px rgba(0,0,0,0.95))
-              drop-shadow(0 20px 40px rgba(0,0,0,0.95))
-              drop-shadow(0 48px 96px rgba(0,0,0,0.80))
-              drop-shadow(0 0px 60px rgba(255,255,255,0.03));
+            filter: brightness(1.20) contrast(1.08)
+              drop-shadow(0 2px 0px rgba(255,255,255,0.30))
+              drop-shadow(0 16px 40px rgba(0,0,0,0.85));
           }
         }
         .hero-icon {
           animation: metalBreathe 10s ease-in-out infinite;
-          will-change: filter;
           transform: translateZ(0);
           -webkit-transform: translateZ(0);
           backface-visibility: hidden;
@@ -175,22 +143,7 @@ export default function AmpariaPage() {
           display: inline-block;
         }
 
-        /* ── Wordmark metallic shimmer ── */
-        @keyframes wordmarkShimmer {
-          0%   { background-position: 200% center; opacity: 0.7; }
-          35%  { background-position: 50% center;  opacity: 1; }
-          70%  { background-position: -100% center; opacity: 0.75; }
-          100% { background-position: -200% center; opacity: 0.7; }
-        }
-        .hero-wordmark-animated {
-          background-size: 200% auto !important;
-          animation: wordmarkShimmer 14s ease-in-out infinite;
-          will-change: background-position;
-          -webkit-transform: translateZ(0);
-          transform: translateZ(0);
-          backface-visibility: hidden;
-          -webkit-backface-visibility: hidden;
-        }
+        /* wordmarkShimmer removed — wordmark deleted */
 
         /* ── MOBILE only (phones) ── */
         @media (max-width: 640px) {
@@ -434,16 +387,6 @@ export default function AmpariaPage() {
               position: "absolute",
               top: "-5%", left: "20%", right: "20%", bottom: "30%",
               background: "radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.03) 40%, transparent 70%)",
-              filter: "blur(28px)",
-              zIndex: 0,
-            }} />
-            {/* floor reflection */}
-            <div style={{
-              position: "absolute",
-              bottom: "-5%", left: "25%", right: "25%",
-              height: "30%",
-              background: "radial-gradient(ellipse at 50% 100%, rgba(255,255,255,0.04) 0%, transparent 70%)",
-              filter: "blur(20px)",
               zIndex: 0,
             }} />
 

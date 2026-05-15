@@ -72,7 +72,7 @@ function PhoneTiltCard({ image, label, badge, isTouch }) {
       {badge && (
         <div style={{
           position: "absolute", top: "20px", right: "20px",
-          background: "rgba(0,0,0,0.75)", backdropFilter: "blur(8px)",
+          background: "rgba(0,0,0,0.88)",
           border: "1px solid rgba(255,255,255,0.15)", borderRadius: "20px",
           padding: "4px 10px",
           fontFamily: "'Helvetica Neue', Helvetica, sans-serif",
@@ -96,7 +96,7 @@ function PhoneTiltCard({ image, label, badge, isTouch }) {
             whileHover={{ scale: 1.03 }}
             transition={{ scale: { type: "spring", stiffness: 200, damping: 25 } }}
           >
-            <motion.div style={{ position: "absolute", inset: "20px -8px -28px", borderRadius: "44px", background: "rgba(0,0,0,0.55)", filter: "blur(28px)", x: shadowX, y: shadowY, zIndex: -1 }} />
+            <div style={{ position: "absolute", inset: "20px -8px -28px", borderRadius: "44px", background: "rgba(0,0,0,0.55)", boxShadow: "0 28px 60px rgba(0,0,0,0.7)", zIndex: -1 }} />
             {phoneFrame}
           </motion.div>
         </div>
