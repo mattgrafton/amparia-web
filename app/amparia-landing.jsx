@@ -166,6 +166,9 @@ export default function AmpariaPage() {
             position: relative !important;
             z-index: 10 !important;
           }
+          .studio-light {
+            display: none !important;
+          }
         }
 
         /* ── MOBILE only (phones) ── */
