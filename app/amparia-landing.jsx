@@ -364,7 +364,7 @@ export default function AmpariaPage() {
               objectFit: "cover",
               objectPosition: "center 30%",
               display: "block",
-              filter: "grayscale(100%) brightness(0.24) contrast(1.2)",
+              filter: "grayscale(100%) brightness(0.28) contrast(1.3)",
             }}
           />
         </div>
@@ -372,6 +372,10 @@ export default function AmpariaPage() {
         <div style={{
           position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none",
           background: "linear-gradient(125deg, rgba(255,255,255,0.04) 0%, transparent 40%, rgba(0,0,0,0.4) 100%)",
+        }} />
+        <div style={{
+          position: "absolute", inset: 0, zIndex: 3, pointerEvents: "none",
+          background: "linear-gradient(to bottom, rgba(30,30,30,0.5) 0%, rgba(10,10,10,0.2) 30%, transparent 60%, rgba(0,0,0,0.6) 100%)",
         }} />
 
         {/* ── LOGO CENTERPIECE ── */}
@@ -429,20 +433,20 @@ export default function AmpariaPage() {
               lineHeight: 1,
               color: "transparent",
               backgroundImage: `linear-gradient(
-                90deg,
-                #6a6a6a 0%,
-                #a8a8a8 20%,
-                #ffffff 35%,
-                #e8e8e8 45%,
-                #d4d4d4 50%,
-                #e8e8e8 55%,
-                #ffffff 65%,
-                #a8a8a8 80%,
-                #6a6a6a 100%
+                180deg,
+                #3a3a3a 0%,
+                #888888 15%,
+                #ffffff 30%,
+                #c8c8c8 42%,
+                #e8e8e8 50%,
+                #c8c8c8 58%,
+                #ffffff 70%,
+                #888888 85%,
+                #3a3a3a 100%
               )`,
               WebkitBackgroundClip: "text",
               backgroundClip: "text",
-              filter: "drop-shadow(0px 1px 0px rgba(255,255,255,0.6)) drop-shadow(0px 2px 0px rgba(200,200,200,0.3)) drop-shadow(0px 3px 0px rgba(0,0,0,0.8)) drop-shadow(0px 4px 0px rgba(0,0,0,0.6)) drop-shadow(0px 6px 0px rgba(0,0,0,0.4)) drop-shadow(0px 12px 24px rgba(0,0,0,0.9))",
+              filter: "drop-shadow(0px 1px 0px rgba(255,255,255,0.9)) drop-shadow(0px 3px 0px rgba(180,180,180,0.4)) drop-shadow(0px 5px 0px rgba(0,0,0,0.9)) drop-shadow(0px 8px 0px rgba(0,0,0,0.7)) drop-shadow(0px 12px 0px rgba(0,0,0,0.5)) drop-shadow(0px 20px 40px rgba(0,0,0,0.95))",
             }}>
               AMPARIA
             </span>
