@@ -62,6 +62,20 @@ export default function AmpariaPage() {
 
   const [error, setError] = useState("");
 
+  // Blur phone section slightly as user scrolls into it
+  useState(() => {
+    const onScroll = () => {
+      const el = document.getElementById("phone-section");
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const pct = Math.max(0, Math.min(1, 1 - (rect.top / window.innerHeight)));
+      const blur = pct < 0.15 ? 0 : pct > 0.85 ? 0 : Math.sin(pct * Math.PI) * 3;
+      el.style.filter = `blur(${blur}px)`;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -174,7 +188,7 @@ export default function AmpariaPage() {
 
         /* ── IPAD only ── */
         @media (min-width: 641px) and (max-width: 1024px) {
-          .hero-icon     { width: clamp(420px, 55vw, 620px) !important; }
+          .hero-icon     { width: clamp(504px, 66vw, 744px) !important; }
           .hero-wordmark { font-size: clamp(52px, 8vw, 100px) !important; }
 
           .story-grid {
@@ -467,7 +481,12 @@ export default function AmpariaPage() {
           borderTop: "1px solid rgba(255,255,255,0.04)",
         }}
       >
+        <div style={{
+        filter: "blur(0px)",
+        transition: "filter 0.6s ease",
+      }} id="phone-section">
         <PhoneShowcase lang={lang} />
+      </div>
 
         <div style={{ margin: "0 40px", height: "1px", background: "rgba(255,255,255,0.04)" }} />
 
@@ -533,7 +552,7 @@ export default function AmpariaPage() {
           <p style={{
             fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
             fontWeight: 500, fontSize: "10px", letterSpacing: "0.28em",
-            color: "rgba(255,255,255,0.28)", lineHeight: 2.2,
+            color: "rgba(255,255,255,0.48)", lineHeight: 2.2,
             maxWidth: "400px", marginBottom: "72px",
           }}>
             {t.waitlistSub}
@@ -681,7 +700,7 @@ function StoryCard({ lang, id, pairB }) {
             <div key={i} style={{ fontFamily: "'Helvetica Neue', Helvetica, sans-serif", fontWeight: 900, fontSize: "clamp(24px, 3.2vw, 38px)", letterSpacing: "-0.02em", color: "#fff", lineHeight: 1.05 }}>{line}</div>
           ))}
         </div>
-        <p style={{ fontFamily: "'Helvetica Neue', Helvetica, sans-serif", fontWeight: 400, fontSize: "11px", letterSpacing: "0.12em", color: "rgba(255,255,255,0.3)", lineHeight: 1.9, maxWidth: "260px", margin: 0 }}>
+        <p style={{ fontFamily: "'Helvetica Neue', Helvetica, sans-serif", fontWeight: 400, fontSize: "11px", letterSpacing: "0.12em", color: "rgba(255,255,255,0.52)", lineHeight: 1.9, maxWidth: "260px", margin: 0 }}>
           {data.sub}
         </p>
       </div>
@@ -689,7 +708,7 @@ function StoryCard({ lang, id, pairB }) {
       {/* Bottom — right col on mobile */}
       <div className="story-card-bottom" style={{ position: "relative", zIndex: 2 }}>
         <div style={{ borderLeft: `2px solid ${accentColor}`, paddingLeft: "16px", marginBottom: "28px" }}>
-          <div style={{ fontFamily: "'Helvetica Neue', Helvetica, sans-serif", fontWeight: 500, fontSize: "9px", letterSpacing: "0.3em", color: "rgba(255,255,255,0.3)", marginBottom: "4px" }}>{data.punch[0]}</div>
+          <div style={{ fontFamily: "'Helvetica Neue', Helvetica, sans-serif", fontWeight: 500, fontSize: "9px", letterSpacing: "0.3em", color: "rgba(255,255,255,0.52)", marginBottom: "4px" }}>{data.punch[0]}</div>
           <div style={{ fontFamily: "'Helvetica Neue', Helvetica, sans-serif", fontWeight: 900, fontSize: "clamp(11px, 1.4vw, 14px)", letterSpacing: "0.15em", color: accentColor, lineHeight: 1.4 }}>{data.punch[1]}</div>
           {data.punch[2] && (
             <div style={{ fontFamily: "'Helvetica Neue', Helvetica, sans-serif", fontWeight: 400, fontSize: "9px", letterSpacing: "0.2em", color: "rgba(255,255,255,0.25)", marginTop: "2px" }}>{data.punch[2]}</div>

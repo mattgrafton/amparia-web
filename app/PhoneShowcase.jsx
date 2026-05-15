@@ -118,8 +118,8 @@ export default function PhoneShowcase({ lang = "es" }) {
   }, []);
 
   const screens = [
-    { image: "/IMG_4680.png", label: lang === "es" ? "Alertas"     : "Alerts",     badge: "LIVE"                          },
     { image: "/IMG_4682.png", label: lang === "es" ? "Dashboard"   : "Dashboard",  badge: lang === "es" ? "NUEVO" : "NEW" },
+    { image: "/IMG_4680.png", label: lang === "es" ? "Alertas"     : "Alerts",     badge: "LIVE"                          },
     { image: "/IMG_4681.png", label: lang === "es" ? "Propiedades" : "Properties"                                         },
   ];
 
