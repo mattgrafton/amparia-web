@@ -375,7 +375,7 @@ export default function AmpariaPage() {
         }} />
         <div style={{
           position: "absolute", inset: 0, zIndex: 3, pointerEvents: "none",
-          background: "linear-gradient(to bottom, rgba(30,30,30,0.5) 0%, rgba(10,10,10,0.2) 30%, transparent 60%, rgba(0,0,0,0.6) 100%)",
+          background: "linear-gradient(to bottom, rgba(45,45,45,0.85) 0%, rgba(20,20,20,0.5) 20%, transparent 50%, rgba(0,0,0,0.7) 100%)",
         }} />
 
         {/* ── LOGO CENTERPIECE ── */}
@@ -433,16 +433,18 @@ export default function AmpariaPage() {
               lineHeight: 1,
               color: "transparent",
               backgroundImage: `linear-gradient(
-                180deg,
-                #3a3a3a 0%,
-                #888888 15%,
-                #ffffff 30%,
-                #c8c8c8 42%,
-                #e8e8e8 50%,
-                #c8c8c8 58%,
-                #ffffff 70%,
-                #888888 85%,
-                #3a3a3a 100%
+                90deg,
+                #2a2a2a 0%,
+                #707070 12%,
+                #c0c0c0 22%,
+                #ffffff 32%,
+                #e0e0e0 40%,
+                #ffffff 50%,
+                #e0e0e0 60%,
+                #ffffff 68%,
+                #c0c0c0 78%,
+                #707070 88%,
+                #2a2a2a 100%
               )`,
               WebkitBackgroundClip: "text",
               backgroundClip: "text",
