@@ -137,12 +137,14 @@ export default function AmpariaPage() {
 
         /* ── Wordmark metallic shimmer ── */
         @keyframes wordmarkShimmer {
-          0%   { background-position: 200% center; }
-          100% { background-position: -200% center; }
+          0%   { background-position: 200% center; opacity: 0.7; }
+          35%  { background-position: 50% center;  opacity: 1; }
+          70%  { background-position: -100% center; opacity: 0.75; }
+          100% { background-position: -200% center; opacity: 0.7; }
         }
         .hero-wordmark-animated {
           background-size: 200% auto !important;
-          animation: wordmarkShimmer 8s linear infinite;
+          animation: wordmarkShimmer 14s ease-in-out infinite;
           will-change: background-position;
           -webkit-transform: translateZ(0);
           transform: translateZ(0);
@@ -375,7 +377,7 @@ export default function AmpariaPage() {
         }} />
         <div style={{
           position: "absolute", inset: 0, zIndex: 3, pointerEvents: "none",
-          background: "linear-gradient(to bottom, rgba(45,45,45,0.85) 0%, rgba(20,20,20,0.5) 20%, transparent 50%, rgba(0,0,0,0.7) 100%)",
+          background: "linear-gradient(to bottom, rgba(38,38,38,0.92) 0%, rgba(25,25,25,0.75) 15%, rgba(12,12,12,0.45) 35%, transparent 55%, rgba(0,0,0,0.65) 100%)",
         }} />
 
         {/* ── LOGO CENTERPIECE ── */}
