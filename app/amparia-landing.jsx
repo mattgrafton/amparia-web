@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import PhoneShowcase from "./PhoneShowcase";
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
 
@@ -63,7 +63,7 @@ export default function AmpariaPage() {
   const [error, setError] = useState("");
 
   // Blur phone section slightly as user scrolls into it
-  useState(() => {
+  useEffect(() => {
     const onScroll = () => {
       const el = document.getElementById("phone-section");
       if (!el) return;
@@ -74,7 +74,21 @@ export default function AmpariaPage() {
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  });
+  }, []);
+
+  // Blur phone section slightly as user scrolls into it
+  useEffect(() => {
+    const onScroll = () => {
+      const el = document.getElementById("phone-section");
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const pct = Math.max(0, Math.min(1, 1 - (rect.top / window.innerHeight)));
+      const blur = pct < 0.15 ? 0 : pct > 0.85 ? 0 : Math.sin(pct * Math.PI) * 3;
+      el.style.filter = `blur(${blur}px)`;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -485,7 +499,12 @@ export default function AmpariaPage() {
         filter: "blur(0px)",
         transition: "filter 0.6s ease",
       }} id="phone-section">
+        <div style={{
+        filter: "blur(0px)",
+        transition: "filter 0.6s ease",
+      }} id="phone-section">
         <PhoneShowcase lang={lang} />
+      </div>
       </div>
 
         <div style={{ margin: "0 40px", height: "1px", background: "rgba(255,255,255,0.04)" }} />
