@@ -100,17 +100,19 @@ export default function AmpariaPage() {
 
         /* ── Hero logo flashlight sweep ── */
         @keyframes logoGlance {
-          0%, 100% {
+          0%, 8% {
+            left: -60%;
             opacity: 0;
-            transform: skewX(-12deg) translateX(-140%);
           }
-          18%, 22% {
+          10% {
             opacity: 1;
-            transform: skewX(-12deg) translateX(240%);
           }
-          23%, 99% {
+          38% {
+            opacity: 1;
+          }
+          42%, 100% {
+            left: 130%;
             opacity: 0;
-            transform: skewX(-12deg) translateX(240%);
           }
         }
         .hero-icon {
@@ -130,23 +132,24 @@ export default function AmpariaPage() {
         .hero-icon-wrap::after {
           content: "";
           position: absolute;
-          top: -20%;
-          left: var(--shine-x, -120%);
-          width: 55%;
-          height: 140%;
+          top: -10%;
+          left: -60%;
+          width: 40%;
+          height: 120%;
           background: linear-gradient(
             105deg,
             transparent 0%,
-            rgba(255,255,255,0.0) 20%,
-            rgba(255,255,255,0.18) 45%,
-            rgba(255,255,255,0.28) 50%,
-            rgba(255,255,255,0.18) 55%,
-            rgba(255,255,255,0.0) 80%,
+            rgba(255,255,255,0.0) 25%,
+            rgba(255,255,255,0.12) 48%,
+            rgba(255,255,255,0.18) 50%,
+            rgba(255,255,255,0.12) 52%,
+            rgba(255,255,255,0.0) 75%,
             transparent 100%
           );
           animation: logoGlance 8s ease-in-out infinite;
           pointer-events: none;
-          filter: blur(3px);
+          filter: blur(2px);
+          mix-blend-mode: screen;
         }
 
         /* ── Wordmark metallic shimmer ── */
@@ -393,7 +396,7 @@ export default function AmpariaPage() {
         }} />
         <div style={{
           position: "absolute", inset: 0, zIndex: 3, pointerEvents: "none",
-          background: "linear-gradient(to bottom, rgba(180,180,180,0.95) 0%, rgba(100,100,100,0.95) 8%, rgba(20,20,20,1.0) 20%, #000000 32%, #000000 100%)",
+          background: "linear-gradient(to bottom, rgb(175,175,175) 0%, rgb(90,90,90) 7%, rgb(10,10,10) 18%, rgb(0,0,0) 28%, rgb(0,0,0) 100%)",
         }} />
 
         {/* ── LOGO CENTERPIECE ── */}
