@@ -98,41 +98,69 @@ export default function AmpariaPage() {
         /* Fix 1: dim labels readable on all screen sizes */
         .dim-label { color: rgba(255,255,255,0.45) !important; }
 
-        /* ── Hero logo breathing glow ── */
-        @keyframes logoGlow {
-          0%, 100% {
+        /* ── Hero logo flashlight sweep ── */
+        @keyframes logoFlashlight {
+          0%   { --shine-x: -120%; }
+          100% { --shine-x: 220%; }
+        }
+        @keyframes logoShine {
+          0%, 15% {
             filter:
-              brightness(1.15) contrast(1.12)
-              drop-shadow(0 2px 0 rgba(255,255,255,0.10))
+              brightness(1.05) contrast(1.12)
+              drop-shadow(0 2px 0 rgba(255,255,255,0.08))
               drop-shadow(0 8px 24px rgba(0,0,0,0.95))
-              drop-shadow(0 24px 64px rgba(0,0,0,0.80))
               drop-shadow(0 48px 120px rgba(0,0,0,0.60));
           }
-          40% {
+          40%, 60% {
             filter:
-              brightness(1.35) contrast(1.08)
-              drop-shadow(0 2px 0 rgba(255,255,255,0.32))
-              drop-shadow(0 0px 48px rgba(255,255,255,0.10))
-              drop-shadow(0 8px 24px rgba(0,0,0,0.70))
-              drop-shadow(0 24px 80px rgba(0,0,0,0.50))
-              drop-shadow(0 48px 120px rgba(0,0,0,0.35));
+              brightness(1.55) contrast(1.05)
+              drop-shadow(0 0px 12px rgba(255,255,255,0.55))
+              drop-shadow(0 2px 0 rgba(255,255,255,0.70))
+              drop-shadow(0 8px 32px rgba(200,200,200,0.20))
+              drop-shadow(0 48px 120px rgba(0,0,0,0.40));
           }
-          70% {
+          85%, 100% {
             filter:
-              brightness(1.10) contrast(1.15)
-              drop-shadow(0 2px 0 rgba(255,255,255,0.06))
-              drop-shadow(0 8px 24px rgba(0,0,0,0.99))
-              drop-shadow(0 24px 64px rgba(0,0,0,0.90))
-              drop-shadow(0 48px 120px rgba(0,0,0,0.75));
+              brightness(1.05) contrast(1.12)
+              drop-shadow(0 2px 0 rgba(255,255,255,0.08))
+              drop-shadow(0 8px 24px rgba(0,0,0,0.95))
+              drop-shadow(0 48px 120px rgba(0,0,0,0.60));
           }
         }
         .hero-icon {
-          animation: logoGlow 7s ease-in-out infinite;
+          animation: logoShine 6s ease-in-out infinite;
           will-change: filter;
           transform: translateZ(0);
           -webkit-transform: translateZ(0);
           backface-visibility: hidden;
           -webkit-backface-visibility: hidden;
+          position: relative;
+        }
+        .hero-icon-wrap {
+          position: relative;
+          display: inline-block;
+          overflow: hidden;
+        }
+        .hero-icon-wrap::after {
+          content: "";
+          position: absolute;
+          top: -20%;
+          left: var(--shine-x, -120%);
+          width: 55%;
+          height: 140%;
+          background: linear-gradient(
+            105deg,
+            transparent 0%,
+            rgba(255,255,255,0.0) 30%,
+            rgba(255,255,255,0.38) 50%,
+            rgba(255,255,255,0.0) 70%,
+            transparent 100%
+          );
+          transform: skewX(-12deg);
+          animation: logoFlashlight 6s ease-in-out infinite;
+          pointer-events: none;
+          border-radius: 50%;
+          filter: blur(8px);
         }
 
         /* ── Wordmark metallic shimmer ── */
@@ -379,7 +407,7 @@ export default function AmpariaPage() {
         }} />
         <div style={{
           position: "absolute", inset: 0, zIndex: 3, pointerEvents: "none",
-          background: "linear-gradient(to bottom, rgba(200,200,200,0.92) 0%, rgba(160,160,160,0.85) 12%, rgba(100,100,100,0.78) 25%, rgba(30,30,30,0.88) 45%, rgba(5,5,5,0.96) 65%, #000 100%)",
+          background: "linear-gradient(to bottom, rgba(185,185,185,0.95) 0%, rgba(120,120,120,0.90) 10%, rgba(50,50,50,0.92) 22%, rgba(10,10,10,0.97) 38%, #000 52%, #000 100%)",
         }} />
 
         {/* ── LOGO CENTERPIECE ── */}
@@ -401,6 +429,7 @@ export default function AmpariaPage() {
             }} />
 
             {/* FIX 1a — hero-icon class overrides width on mobile */}
+              <div className="hero-icon-wrap">
             <img
               src="/amparia-icon.png"
               alt="AMPARIA"
@@ -424,6 +453,7 @@ export default function AmpariaPage() {
                 userSelect: "none",
               }}
             />
+              </div>
           </div>
 
           <div style={{ position: "relative", marginTop: "8px", zIndex: 2, }}>
